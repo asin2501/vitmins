@@ -1,0 +1,124 @@
+.minicart-item{
+    position: relative;
+    display: flex;
+    padding-top:15px;
+    padding-bottom:15px;
+
+    @media (max-width:340px){
+        font-size:16px;
+    }
+
+    @include breakpoint(medium){
+        @media (max-height: 550px) and (orientation:landscape){
+            padding-top:5px;
+            padding-bottom:5px;
+        }
+    }
+}
+
+.minicart-item__img-col{
+    flex-shrink: 0;
+}
+
+.minicart-item__img{
+    width:108px;
+    height:108px;
+    background-color: #000;
+    background-size:cover;
+    background-position: 50% 50%;
+
+    @include breakpoint(mobile-landscape){
+        width:88px;
+        height:88px;
+    }
+
+    @include breakpoint(medium){
+        @media (max-height: 550px) and (orientation:landscape){
+            width:88px;
+            height:88px;
+        }
+    }
+}
+
+.minicart-item__info{
+    padding-left:30px;
+    flex-grow: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+
+    @include breakpoint(medium){
+        padding-left:15px;
+    }
+}
+
+.minicart-item__title {
+    font-size: 20px;
+    font-weight: 100;
+
+    @media (max-width:340px){
+        font-size:16px;
+    }
+}
+
+.minicart-item__top{
+    padding-right:20px;
+}
+
+.minicart-item__bottom {
+    width:100%;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+}
+
+.minicart-item__remove{
+    position: absolute;
+    right:-5px;
+    top:10px;
+    svg{
+        width:18px;
+        height:18px;
+    }
+    padding:5px;
+
+    @include breakpoint(mobile){
+        font-size:25px;
+    }
+}
+
+.list-complete-leave-active {
+    transition: opacity .3s ease-out, transform .3s ease-out;
+}
+
+.list-complete-enter-active {
+    transition: all .4s ease-out;
+    transition-delay: .3s;
+
+}
+.list-complete-leave-to{
+    opacity: 0;
+    transform: translateX(100%);
+}
+.list-complete-enter
+    /* .list-complete-leave-active до версии 2.1.8 */ {
+    opacity: 0;
+    transform: translateX(100%);
+}
+.list-complete-leave-active {
+    position: absolute;
+}
+
+.list-complete-move {
+    transition: transform .4s;
+    transition-delay: .2s;
+}
+
+.component-fade-enter-active, .component-fade-leave-active {
+    transition: opacity .3s ease, transform .4s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+    /* .component-fade-leave-active до версии 2.1.8 */ {
+    opacity: 0;
+    transform: translateX(100%);
+}

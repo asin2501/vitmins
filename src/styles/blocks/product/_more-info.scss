@@ -1,0 +1,28 @@
+.more-info{
+    position: relative;
+    display: inline-block;
+    font-size:20px;
+    padding-right:30px;
+    margin-top:10px;
+
+    &.active {
+        .more-info__arrow {
+            transform: rotateZ(225deg);
+            bottom: 4px;
+        }
+    }
+}
+
+.more-info__arrow{
+    display: block;
+    position: absolute;
+    width:10px;
+    height:10px;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    z-index:1;
+    bottom:8px;
+    right:10px;
+    transform: rotateZ(+45deg);
+    transition: .3s all;
+}

@@ -1,0 +1,97 @@
+<article role="article" itemscope itemtype="http://schema.org/Article" class="single-article">
+
+    <div class="page-banner page-banner--small"
+         style="{% if section.settings.article_banner_img == true %} background-image: url('{{ article.image | img_url: "master" }}');{% endif %} background-color: {{ section.settings.article_banner_bg_color }}; " >
+        <div class="container">
+            <h1 class="page-banner__title" style="color: {{ section.settings.article_title_color }}">{{ article.title }}</h1>
+        </div>
+    </div>
+
+    {% assign article_subtitle = article.metafields.sf_post_group.post_subtitle %}
+    {% if article_subtitle %}
+        <div class="article-container article-text big-text">
+            {{ article_subtitle }}
+        </div>
+    {% endif %}
+
+    {% assign article_text_1 = article.metafields.sf_post_group.post_text_1%}
+    {% if article_text_1 %}
+        <div class="article-container article-text">
+            {{ article_text_1 }}
+        </div>
+    {% endif %}
+
+    {% assign article_image_1 = article.metafields.sf_post_group.post_image_1 %}
+    {% if article_image_1 != blank %}
+        <div class="article-container article-image article-container--img ">
+            <img src="{{ article_image_1 }}" alt="article_image">
+        </div>
+    {% endif %}
+
+    {% assign article_text_2 = article.metafields.sf_post_group.post_text_2%}
+    {% if article_text_2 %}
+        <div class="article-container article-text">
+            {{ article_text_2 }}
+        </div>
+    {% endif %}
+
+    {% assign article_image_2 = article.metafields.sf_post_group.post_image_2 %}
+    {% if article_image_2 != blank %}
+        <div class="article-container article-image article-container--img">
+            <img src="{{ article_image_2}}" alt="article_image">
+        </div>
+    {% endif %}
+
+    {% assign article_text_3 = article.metafields.sf_post_group.post_text_3%}
+    {% if article_text_3 %}
+        <div class="article-container article-text">
+            {{ article_text_3 }}
+        </div>
+    {% endif %}
+
+
+    {% assign article_image_3 = article.metafields.sf_post_group.post_image_3 %}
+    {% if article_image_3 != blank %}
+        <div class="article-container article-image article-container--img">
+            <img src="{{ article_image_3}}" alt="article_image">
+        </div>
+    {% endif %}
+
+    {% assign article_text_4 = article.metafields.sf_post_group.post_text_4%}
+    {% if article_text_4 %}
+        <div class="article-container article-text">
+            {{ article_text_4 }}
+        </div>
+    {% endif %}
+
+</article>
+
+
+
+
+{% schema %}
+{
+    "name": "Article",
+    "settings": [
+        {
+        "type": "checkbox",
+        "id": "article_banner_img",
+        "label": "Enable article image for banner",
+        "default": false
+        },
+        {
+            "type": "color",
+            "id": "article_title_color",
+            "label": "Article title color",
+            "default": "#16161d"
+        },
+        {
+            "type": "color",
+            "id": "article_banner_bg_color",
+            "label": "Article banner background color",
+            "default": "#fbfaf8"
+        }
+    ]
+}
+
+{% endschema %}

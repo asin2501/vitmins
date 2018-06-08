@@ -1,0 +1,47 @@
+.single-article {
+
+  .big-text {
+    margin-top: 80px;
+    margin-bottom: 60px;
+
+    @include breakpoint(extra-small) {
+      margin-top: 40px;
+      margin-bottom: 40px;
+      font-size: 26px;
+    }
+
+    @include breakpoint(mobile-landscape) {
+      font-size: 24px;
+    }
+  }
+
+  img {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+
+  .article-text {
+
+    p {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+
+    a {
+      border-bottom: 1px solid #16161D;
+    }
+
+    @include breakpoint(small) {
+      padding: 0 30px;
+    }
+  }
+
+  .article-image {
+
+    @include breakpoint(extra-small) {
+      padding: 0 15px;
+    }
+  }
+}

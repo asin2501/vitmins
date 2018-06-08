@@ -1,0 +1,44 @@
+{% comment %}
+    Use this code on your custom page templates section, for SAVE CUSTOM SETTINGS of section
+{% endcomment %}
+
+<section class="page-banner"
+         style="background-color: {{ section.settings.banner_bg_color }};
+         {% if section.settings.banner_image != blank %} background-image: url('{{ section.settings.banner_image | img_url: 'master' }}');{% endif %}">
+
+    <div class="container">
+        {% if section.settings.banner_title != blank %}
+            <h1 class="page-banner__title" style="color:{{ section.settings.banner_title_color }}">{{ section.settings.banner_title }}</h1>
+        {% endif %}
+    </div>
+</section>
+
+{% schema %}
+{
+	"name": "Page Banner",
+	"settings": [
+	{
+		"type": "color",
+		"id": "banner_bg_color",
+		"label": "Banner background-color",
+        "default": "#FBFAF8"
+	},
+	{
+		"type": "image_picker",
+		"id": "banner_image",
+		"label": "Banner image"
+	},
+    {
+        "type": "html",
+        "id": "banner_title",
+        "label": "Banner title"
+    },
+    {
+        "type": "color",
+        "id": "banner_title_color",
+        "label": "Banner title color",
+        "default": "#16161D"
+    }
+	]
+}
+{% endschema %}

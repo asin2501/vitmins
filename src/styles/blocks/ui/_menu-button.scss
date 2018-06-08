@@ -1,0 +1,29 @@
+.menu-button {
+    display: none;
+
+    @include breakpoint(extra-small) {
+        position: absolute;
+        right: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: inline-block;
+        border: none;
+        border-radius: 0;
+        background-color: transparent;
+        -webkit-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+        span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: $black;
+            margin-bottom: 5px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

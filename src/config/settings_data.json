@@ -1,0 +1,480 @@
+{
+  "current": {
+    "type_base_size": "16px",
+    "color_primary": "#000",
+    "color_body_text": "#000",
+    "social_sharing_blog": true,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_snapchat_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "cart_notes_enable": true,
+    "favicon": "shopify:\/\/shop_images\/p2.png",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/Logo_Header_2x_eb5974bb-e35c-434a-92a4-98b88bad2bd8.png",
+          "logo_dark": "shopify:\/\/shop_images\/Footer_logo_retina_3x_7802a98e-e3d9-4e7c-a7da-9245ff1f74ed.png",
+          "main_linklist": "main-menu",
+          "main_linklist_2": "footer-mobile",
+          "promo_text": "Free shipping on all orders over NOK 500,-"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_linklist": "footer",
+          "footer_linklist2": "footer-menu-2",
+          "logo": "shopify:\/\/shop_images\/Footer_logo_retina_3x_7802a98e-e3d9-4e7c-a7da-9245ff1f74ed.png",
+          "input_placeholder": "Sign up for our newsletter",
+          "btn_text": "Sign up",
+          "action": "https:\/\/beta.us16.list-manage.com\/subscribe\/post?u=5215892ebe0dfb898b9ff1233&id=eda28d4d82"
+        }
+      },
+      "1526555122191": {
+        "type": "simple-banner",
+        "settings": {
+          "title": "Good habits, made simple.",
+          "subtitle": "Everyone has a different path to personal health, and we’re here to make it easy for you.",
+          "btn_text": "Shop now",
+          "link_url": "shopify:\/\/collections\/vitamin-films",
+          "bg_img": ""
+        }
+      },
+      "1526557052880": {
+        "type": "simple-banner",
+        "settings": {
+          "title": "Honesty. Quality. Transparency.",
+          "subtitle": "",
+          "btn_text": "Our core values",
+          "link_url": "shopify:\/\/pages\/about",
+          "bg_img": "shopify:\/\/shop_images\/Mask_Group_60_2x_23027de1-70f2-4869-81ed-995eb34123c9.png"
+        }
+      },
+      "1526557961190": {
+        "type": "link-section",
+        "settings": {
+          "text1": "Have a question?",
+          "text2": "Search our FAQ for answers to anything you might be wondering.",
+          "btn_text": "Go to FAQ",
+          "link_url": "shopify:\/\/products\/bone-support",
+          "color": "pink"
+        }
+      },
+      "1526568767327": {
+        "type": "simple-banner",
+        "settings": {
+          "title": "Vitamins. Simplified.",
+          "subtitle": "",
+          "btn_text": "Shop now",
+          "link_url": "shopify:\/\/collections\/vitamin-films",
+          "bg_img": "shopify:\/\/shop_images\/home-banner.jpg"
+        }
+      },
+      "1526568818404": {
+        "type": "media-block",
+        "settings": {
+          "media_image": "shopify:\/\/shop_images\/Mask_Group_61_2x_cbf8d834-0ec6-4158-9c4f-c659a2067b4a.png",
+          "block_title": "Only essential ingredients",
+          "block_link_title": "Our ingredients",
+          "block_link_url": "shopify:\/\/blogs\/ingredients\/vitamin-c",
+          "block_bg": "#fbfaf8",
+          "image_position": "left"
+        }
+      },
+      "1526568863925": {
+        "type": "media-block",
+        "settings": {
+          "media_image": "shopify:\/\/shop_images\/Plein_x_15_2x_a5c9008a-c8dc-4090-8a86-37f84c1965d0.png",
+          "block_title": "It’s ok to geek out on vitamins. We do…",
+          "block_link_title": "Research & Innovation",
+          "block_link_url": "shopify:\/\/pages\/about",
+          "block_bg": "#ffffff",
+          "image_position": "right"
+        }
+      },
+      "1526568934532": {
+        "type": "media-block",
+        "settings": {
+          "media_image": "shopify:\/\/shop_images\/Mask_Group_59_2x_a5779b73-1667-4001-b1d1-d12aa15424e7.png",
+          "block_title": "For skeptics, by skeptics.",
+          "block_link_title": "Our story",
+          "block_link_url": "shopify:\/\/pages\/about",
+          "block_bg": "#fbfaf8",
+          "image_position": "left"
+        }
+      },
+      "product": {
+        "type": "product",
+        "settings": {
+          "show_share_buttons": true,
+          "vitamins_title": "Vitamins in this film"
+        }
+      },
+      "link-section": {
+        "type": "link-section",
+        "settings": {
+          "text1": "Did you know that we offer Free Shipping on orders above NOK 900,-",
+          "text2": "",
+          "btn_text": "Shipping Information",
+          "link_url": "",
+          "color": "blue"
+        }
+      },
+      "propose-banner": {
+        "type": "propose-banner",
+        "settings": {
+          "title": "Get the premium box on all orders over NOK 500,-",
+          "bg_img": "shopify:\/\/shop_images\/banner_d7e06348-ca03-472c-9284-911839635542.png"
+        }
+      },
+      "innovations": {
+        "type": "innovations",
+        "blocks": {
+          "1527078252081": {
+            "type": "Blog",
+            "settings": {
+              "blog": "ingredients"
+            }
+          }
+        },
+        "block_order": [
+          "1527078252081"
+        ],
+        "settings": {
+          "banner_bg_color": "#fbfaf8",
+          "banner_image": "",
+          "banner_title": "It’s ok to geek out on vitamins.",
+          "banner_title_color": "#16161d",
+          "category": "Energy,  Immunity, Bones"
+        }
+      },
+      "login-popup": {
+        "type": "login-popup",
+        "settings": {
+          "popup_bg": "#ebe3d7",
+          "sign_in_title": "Sign in or register"
+        }
+      },
+      "link-section-2": {
+        "type": "link-section-2",
+        "settings": {
+          "text1": "Did you know that we offer Free Shipping on orders above NOK 900,-",
+          "text2": "",
+          "btn_text": "Shipping Information",
+          "link_url": "shopify:\/\/pages\/about",
+          "color": "blue"
+        }
+      },
+      "shop": {
+        "type": "shop",
+        "settings": {
+          "collection_layout": "slider",
+          "banner_bg_color": "#fbfaf8",
+          "use_collection_img": false,
+          "banner_title": "Test text",
+          "banner_title_color": "#000000",
+          "title": "Get the premium box on all orders over NOK 500,-",
+          "title_color_1": "#fff",
+          "bg_img": "shopify:\/\/shop_images\/banner_d7e06348-ca03-472c-9284-911839635542.png",
+          "title_2": "Get the premium box on all orders over NOK 500,-",
+          "title_color_2": "#fff",
+          "bg_img_2": "shopify:\/\/shop_images\/Mask_Group_60_2x_23027de1-70f2-4869-81ed-995eb34123c9.png",
+          "slider_auto_play_speed": 3000,
+          "products_slider_bg": "#fff"
+        }
+      },
+      "customer-support": {
+        "type": "customer-support",
+        "blocks": {
+          "1527171404551": {
+            "type": "select",
+            "settings": {
+              "title": "Contact us",
+              "text": "<p>Vitamin C is a powerful antioxidant that plays a role in immune health, albeit one that&nbsp;<br>has&nbsp;<br>become overinflated. People extremely deficient in vitamin C - and this is rare - can<\/p>",
+              "text2": "<p>Call:&nbsp;<a href=\"tel:%20+4700000000\" title=\"tel: +4700000000\">+47 000 00 000<\/a><\/p>\n<p>Email:&nbsp;<a href=\"mailto:mail@mail.com\" title=\"mailto:mail@mail.com\">mail@mail.com<\/a><\/p>"
+            }
+          },
+          "1527171426563": {
+            "type": "select",
+            "settings": {
+              "title": "Payment conditions",
+              "text": "<p>Vitamin C is a powerful antioxidant that plays a role in immune health, albeit one that has become overinflated. People extremely deficient in vitamin C - and this is rare - can develop scurvy, a deficiency disease.<\/p>\n<p>Vitamin C is naturally found in fruits and vegetables, like oranges, broccoli, and&nbsp;<br>tomatoes,<br>and the best way to get it is to consume these foods raw. If you&rsquo;re not getting a lot of<\/p>",
+              "text2": ""
+            }
+          },
+          "1527171443872": {
+            "type": "select",
+            "settings": {
+              "title": "Privacy Policy",
+              "text": "<p>Vitamin C is a powerful antioxidant that plays a role in immune health, albeit one that has become overinflated. People extremely deficient in vitamin C - and this is rare - can develop scurvy, a deficiency disease.<\/p>\n<p>Vitamin C is naturally found in fruits and vegetables, like oranges, broccoli, and&nbsp;<br>tomatoes,<br>and the best way to get it is to consume these foods raw. If you&rsquo;re not getting a lot of<\/p>",
+              "text2": ""
+            }
+          },
+          "1527171451650": {
+            "type": "select",
+            "settings": {
+              "title": "Terms & conditions",
+              "text": "<p>Vitamin C is a powerful antioxidant that plays a role in immune health, albeit one that has become overinflated. People extremely deficient in vitamin C - and this is rare - can develop scurvy, a deficiency disease.<\/p>\n<p>Vitamin C is naturally found in fruits and vegetables, like oranges, broccoli, and&nbsp;<br>tomatoes,<br>and the best way to get it is to consume these foods raw. If you&rsquo;re not getting a lot of<\/p>",
+              "text2": ""
+            }
+          }
+        },
+        "block_order": [
+          "1527171404551",
+          "1527171426563",
+          "1527171443872",
+          "1527171451650"
+        ],
+        "settings": {
+          "nav_bg": "#ebe3d7",
+          "banner_image": "shopify:\/\/shop_images\/Mask_Group_16_2x_f1370eab-29fb-44f4-bb65-4a2ffd022ca7.png",
+          "banner_title": "Customer <br>\nsupport",
+          "banner_title_color": "#16161d",
+          "banner_bg": "#fbfaf8"
+        }
+      },
+      "page-faq": {
+        "type": "page-faq",
+        "blocks": {
+          "1527170353810": {
+            "type": "basics",
+            "settings": {
+              "question_title": "What is Plein?",
+              "question_answer": "<p>Vitamin C is a powerful antioxidant that plays a role in immune health, albeit one that has become overinflated. People extremely deficient in vitamin C - and this is rare - can develop scurvy, a deficiency disease.<\/p>\n<p>Vitamin C is naturally found in fruits and vegetables, like oranges, broccoli, and tomatoes, and the best way to get it is to consume these foods raw. If you&rsquo;re not getting a lot of these foods in your diet, you may be getting less than the daily recommended amount.<\/p>"
+            }
+          },
+          "1527170422466": {
+            "type": "basics",
+            "settings": {
+              "question_title": "How do I get started?",
+              "question_answer": "<p>Vitamin C is a powerful antioxidant that plays a role in immune health, albeit one that has become overinflated. People extremely deficient in vitamin C - and this is rare - can develop scurvy, a deficiency disease.<\/p>\n<p>Vitamin C is naturally found in fruits and vegetables, like oranges, broccoli, and tomatoes, and the best way to get it is to consume these foods raw. If you&rsquo;re not getting a lot of these foods in your diet, you may be getting less than the daily recommended amount.<\/p>"
+            }
+          },
+          "1527170449286": {
+            "type": "basics",
+            "settings": {
+              "question_title": "What is Plein?",
+              "question_answer": "<p>Vitamin C is a powerful antioxidant that plays a role in immune health, albeit one that has become overinflated. People extremely deficient in vitamin C - and this is rare - can develop scurvy, a deficiency disease.<\/p>\n<p>Vitamin C is naturally found in fruits and vegetables, like oranges, broccoli, and tomatoes, and the best way to get it is to consume these foods raw. If you&rsquo;re not getting a lot of these foods in your diet, you may be getting less than the daily recommended amount.<\/p>"
+            }
+          },
+          "1527170476184": {
+            "type": "subscriptions",
+            "settings": {
+              "question_title": "What is Plein?",
+              "question_answer": "<p>Vitamin C is a powerful antioxidant that plays a role in immune health, albeit one that has become overinflated. People extremely deficient in vitamin C - and this is rare - can develop scurvy, a deficiency disease.<\/p>\n<p>Vitamin C is naturally found in fruits and vegetables, like oranges, broccoli, and tomatoes, and the best way to get it is to consume these foods raw. If you&rsquo;re not getting a lot of these foods in your diet, you may be getting less than the daily recommended amount.<\/p>"
+            }
+          },
+          "1527170509151": {
+            "type": "subscriptions",
+            "settings": {
+              "question_title": "How do I get started?",
+              "question_answer": "<p>Your answer 222<\/p>"
+            }
+          },
+          "1527170528309": {
+            "type": "pricing",
+            "settings": {
+              "question_title": "What is Plein?",
+              "question_answer": "<p>Vitamin C is a powerful antioxidant that plays a role in immune health, albeit one that has become overinflated. People extremely deficient in vitamin C - and this is rare - can develop scurvy, a deficiency disease.<\/p>\n<p>Vitamin C is naturally found in fruits and vegetables, like oranges, broccoli, and tomatoes, and the best way to get it is to consume these foods raw. If you&rsquo;re not getting a lot of these foods in your diet, you may be getting less than the daily recommended amount.<\/p>"
+            }
+          },
+          "1527170565240": {
+            "type": "pricing",
+            "settings": {
+              "question_title": "How do I get started?",
+              "question_answer": "<p>Your answer<\/p>"
+            }
+          },
+          "1527170574002": {
+            "type": "ingredients",
+            "settings": {
+              "question_title": "What is Plein?",
+              "question_answer": "<p>Your answer<\/p>"
+            }
+          },
+          "1527170585173": {
+            "type": "ingredients",
+            "settings": {
+              "question_title": "How do I get started?",
+              "question_answer": "<p>Your answer<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1527170353810",
+          "1527170422466",
+          "1527170449286",
+          "1527170476184",
+          "1527170509151",
+          "1527170528309",
+          "1527170565240",
+          "1527170574002",
+          "1527170585173"
+        ],
+        "settings": {
+          "banner_bg_color": "#fbfaf8",
+          "banner_image": "",
+          "banner_title": "Frequently Asked Questions",
+          "banner_title_color": "#16161d",
+          "nav_bg": "#ebe3d7",
+          "basics_title": "The Basics",
+          "subscriptions_title": "Subscriptions",
+          "pricing_title": "Pricing",
+          "ingredients_title": "Ingredients"
+        }
+      },
+      "page-banner": {
+        "type": "page-banner",
+        "settings": {
+          "banner_bg_color": "#fbfaf8",
+          "banner_image": "",
+          "banner_title": "",
+          "banner_title_color": "#16161d"
+        }
+      },
+      "about-page": {
+        "type": "about-page",
+        "blocks": {
+          "1527171218470": {
+            "type": "select",
+            "settings": {
+              "block_title": "Our story",
+              "block_text": "<p>Travelling alteration impression six all uncommonly. Chamber hearing inhabit joy highest private ask him our believe. Up nature valley do warmly. Entered of cordial do on no hearted. Yet agreed whence and unable limits. Use off him gay abilities concluded immediate allowance.<\/p>\n<p>Society excited by cottage private an it esteems. Fully begin on by wound an. Girl rich in do up or both. At declared in as rejoiced of together. He impression collecting delightful unpleasant by prosperous as on. End too talent she object mrs wanted remove giving judge fruit charm views.<\/p>\n<p>Savings her pleased are several started females met. Short her not among being any. Thing of judge fruit charm views do. Miles mr an forty along as he. She education get middleton day agreement performed preserved unwilling.<\/p>",
+              "block_image": "shopify:\/\/shop_images\/Mask_Group_15_2x_b26dd41e-128b-4216-b82b-24a5b682e31f.png",
+              "btn_text": "",
+              "link_url": "",
+              "block_text2": "<p>Society excited by cottage private an it esteems. Fully begin on by wound an. Girl rich in do up or both. At declared in as rejoiced of together. He impression collecting delightful unpleasant by prosperous as on. End too talent she object mrs wanted remove giving judge fruit charm views.<\/p>\n<p>Savings her pleased are several started females met. Short her not among being any. Thing of judge fruit charm views do. Miles mr an forty along as he. She education get middleton day agreement performed preserved unwilling.<\/p>\n<p>Savings her pleased are several started females met. Short her not among being any. Thing of judge fruit charm views do. Miles mr an forty along as he. She education get middleton day agreement performed preserved unwilling.<\/p>",
+              "block_image2": "shopify:\/\/shop_images\/Mask_Group_16_2x_f1370eab-29fb-44f4-bb65-4a2ffd022ca7.png",
+              "btn_text2": "",
+              "link_url2": "",
+              "block_invert": "default"
+            }
+          },
+          "1527171264966": {
+            "type": "select",
+            "settings": {
+              "block_title": "Our team",
+              "block_text": "<p>Travelling alteration impression six all uncommonly. Chamber hearing inhabit joy highest private ask him our believe. Up nature valley do warmly. Entered of cordial do on no hearted. Yet agreed whence and unable limits. Use off him gay abilities concluded immediate allowance.<\/p>\n<p>Society excited by cottage private an it esteems. Fully begin on by wound an. Girl rich in do up or both. At declared in as rejoiced of together. He impression collecting delightful unpleasant by prosperous as on. End too talent she object mrs wanted remove giving judge fruit charm views.<\/p>\n<p>Savings her pleased are several started females met. Short her not among being any. Thing of judge fruit charm views do. Miles mr an forty along as he. She education get middleton day agreement performed preserved unwilling.<\/p>",
+              "block_image": "shopify:\/\/shop_images\/Mask_Group_17_2x_24760612-4ab2-4d4f-9e78-549a142f61f3.png",
+              "btn_text": "",
+              "link_url": "",
+              "block_text2": "",
+              "block_image2": "",
+              "btn_text2": "",
+              "link_url2": "",
+              "block_invert": "default"
+            }
+          },
+          "1527171294807": {
+            "type": "select",
+            "settings": {
+              "block_title": "Our values",
+              "block_text": "<p>Travelling alteration impression six all uncommonly. Chamber hearing inhabit joy highest private ask him our believe. Up nature valley do warmly. Entered of cordial do on no hearted. Yet agreed whence and unable limits. Use off him gay abilities concluded immediate allowance.<\/p>\n<p>Society excited by cottage private an it esteems. Fully begin on by wound an. Girl rich in do up or both. At declared in as rejoiced of together. He impression collecting delightful unpleasant by prosperous as on. End too talent she object mrs wanted remove giving judge fruit charm views.<\/p>\n<p>Savings her pleased are several started females met. Short her not among being any. Thing of judge fruit charm views do. Miles mr an forty along as he. She education get middleton day agreement performed preserved unwilling.<\/p>",
+              "block_image": "shopify:\/\/shop_images\/Mask_Group_59_2x_a5779b73-1667-4001-b1d1-d12aa15424e7.png",
+              "btn_text": "",
+              "link_url": "",
+              "block_text2": "",
+              "block_image2": "",
+              "btn_text2": "",
+              "link_url2": "",
+              "block_invert": "invert"
+            }
+          }
+        },
+        "block_order": [
+          "1527171218470",
+          "1527171264966",
+          "1527171294807"
+        ],
+        "settings": {
+          "banner_bg_color": "#fbfaf8",
+          "banner_image": "",
+          "banner_title": "We’re here to solve simple health problems. Simply.",
+          "banner_title_color": "#16161d",
+          "nav_bg": "#ebe3d7"
+        }
+      }
+    },
+    "content_for_index": [
+      "1526568767327",
+      "1526555122191",
+      "1526568818404",
+      "1526568863925",
+      "1526557052880",
+      "1526568934532",
+      "1526557961190"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "sections": {
+        "collection-list": {
+          "type": "collection-list",
+          "blocks": {
+            "collection-list-0": {
+              "type": "collection",
+              "settings": {
+              }
+            },
+            "collection-list-1": {
+              "type": "collection",
+              "settings": {
+              }
+            },
+            "collection-list-2": {
+              "type": "collection",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "collection-list-0",
+            "collection-list-1",
+            "collection-list-2"
+          ],
+          "settings": {
+          }
+        },
+        "featured-collection": {
+          "type": "featured-collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "featured-product": {
+          "type": "featured-product",
+          "settings": {
+          }
+        }
+      },
+      "content_for_index": [
+        "collection-list",
+        "featured-collection",
+        "featured-product"
+      ]
+    }
+  }
+}

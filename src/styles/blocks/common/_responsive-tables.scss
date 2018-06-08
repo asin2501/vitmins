@@ -1,0 +1,128 @@
+/*============================================================================
+  Responsive tables, defined with .responsive-table on table element.
+==============================================================================*/
+@include breakpoint(small) {
+  .responsive-table {
+    width: 100%;
+    border: none !important;
+
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: block;
+      border: 1px solid $gray !important;
+    }
+
+    // IE9 table layout fixes
+    tr,
+    td {
+      float: left;
+      clear: both;
+      width: 100%;
+    }
+
+    th,
+    td {
+      display: block;
+      text-align: right;
+      padding: 30px / 2;
+      margin: 0;
+    }
+
+    td {
+      border: none !important;
+    }
+
+    td::before {
+      content: attr(data-label);
+      float: left;
+      text-align: center;
+      padding-right: 10px;
+      font-weight: bold;
+    }
+
+    // Add a keyline between rows
+    .responsive-table-row + .responsive-table-row,
+    tfoot > .responsive-table-row:first-child {
+      position: relative;
+      margin-top: 10px;
+      padding-top: 30px / 2;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 30px / 2;
+        right: 30px / 2;
+        border-bottom: 1px solid $gray;
+      }
+    }
+  }
+}
+
+
+@include breakpoint(extra-small) {
+  .responsive-table-small {
+    width: 100%;
+    border: none !important;
+
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: block;
+      border: 1px solid $gray !important;
+    }
+
+    // IE9 table layout fixes
+    tr,
+    td {
+      float: left;
+      clear: both;
+      width: 100%;
+    }
+
+    th,
+    td {
+      display: block;
+      text-align: right;
+      padding: 30px / 2;
+      margin: 0;
+    }
+
+    td {
+      border: none !important;
+    }
+
+    td::before {
+      content: attr(data-label);
+      float: left;
+      text-align: left;
+      padding-right: 10px;
+      font-weight: bold;
+    }
+
+    // Add a keyline between rows
+    .responsive-table-row + .responsive-table-row,
+    tfoot > .responsive-table-row:first-child {
+      position: relative;
+      margin-top: 10px;
+      padding-top: 30px / 2;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 30px / 2;
+        right: 30px / 2;
+        border-bottom: 1px solid $gray;
+      }
+    }
+  }
+}
+

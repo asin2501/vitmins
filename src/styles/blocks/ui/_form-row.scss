@@ -1,0 +1,9 @@
+.form-row {
+    + .form-row {
+        margin-top: 30px;
+
+        @include breakpoint(extra-small) {
+            margin-top: 15px;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+.product-form{
+    margin-top:65px;
+    text-align: center;
+    font-size:30px;
+    position: relative;
+
+    &.product-form--offset-bottom {
+        margin-bottom: 65px;
+    }
+}
+
+.product-form__add-to-cart{
+    background-color: transparent;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size:30px;
+    font-family:$moderat-light;
+    margin-top:15px;
+    cursor: pointer;
+}

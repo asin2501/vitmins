@@ -1,0 +1,152 @@
+<div class="header-wrapper" data-section-id="{{ section.id }}" data-section-type="header-section"> 
+    {% if section.settings.promo_text %}
+        <div class="promo-ribbon" id="promo-ribbon">
+            <div class="container">
+                <p>{{ section.settings.promo_text }}</p>
+                <button class="promo-ribbon__cross">+</button>
+            </div>
+        </div>
+    {% endif %}
+    <header id="header" class="header" role="banner" data-template="{{ template.name | handle }}">
+        <div class="header__container">
+            <a href="#" class="header__cart-link js-open-cart">(<span id="cart-counter">{{ cart.item_count }}</span>)</a>
+
+            <div class="header__logo" itemscope itemtype="http://schema.org/Organization">
+                <a href="/" itemprop="url" class="site-logo">
+                    {% if section.settings.logo != blank %}
+                        {% assign template_name_handl = template.name | handle %}
+                        {% if template_name_handl == 'index' or template_name_handl == 'product' %}
+                            <img src="{{ section.settings.logo | img_url: image_size }}"
+                                 alt="{{ section.settings.logo.alt | default: shop.name }}"
+                                 itemprop="logo">
+                            {% else %}
+                            <img src="{{ section.settings.logo_dark | img_url: image_size }}"
+                                 alt="{{ section.settings.logo_dark.alt | default: shop.name }}"
+                                 itemprop="logo">
+                        {% endif %}
+                    {% endif %}
+                </a>
+            </div>
+
+            <nav class="header__navigation js-main-nav" role="navigation">
+                <ul class="main-menu">
+                    {% for link in linklists[section.settings.main_linklist].links %}
+                        {%- assign child_list_handle = link.title | handleize -%}
+                        {% if menus[child_list_handle].links != blank %}
+                            <li class="main-menu__item main-menu--has-submenu{% if link.active %} main-menu__item--active{% endif %}">
+                                <a href="{{ link.url }}" class="main-menu__link">
+                                    {{ link.title }}
+                                    {% include 'icon-arrow-down' %}
+                                </a>
+                                <ul class="main-menu__submenu">
+                                    {% for childlink in menus[child_list_handle].links %}
+                                        <li class="main-menu__item {% if childlink.active %}main-menu__item--active{% endif %}">
+                                            <a href="{{ childlink.url }}"
+                                               class="main-menu__link">{{ childlink.title | escape }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li class="main-menu__item {% if link.active %}main-menu__item--active {% endif %}">
+                                <a href="{{ link.url }}" class="main-menu__link">{{ link.title }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if shop.customer_accounts_enabled %}
+                        {% if customer %}
+                            <li class="main-menu__item {% if template.name == 'account' or template.name == 'addresses' or template.name == 'order' %} main-menu__item--active {% endif %}">
+                                <a href="/account" class="main-menu__link ">{{ 'layout.customer.account' | t }}</a>
+                            </li>
+                            <li class="main-menu__item">{{ 'layout.customer.log_out' | t | customer_logout_link }}</li>
+                        {% else %}
+                            <li class="main-menu__item">
+                                <a href="/account/login" class="main-menu__link js-login-link">{{ 'layout.customer.sign_in' | t }}</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                    <li class="main-menu__item"><a href="/cart" class="main-menu__link  js-open-cart main-menu__cart">{{ 'layout.cart.title' | t }}</a></li>
+                </ul>
+
+                {% if section.settings.main_linklist_2 != blank %}
+                    <ul class="main-menu main-menu--secondary" data-links="{{ section.settings.main_linklist_2.size }}">
+                        {% for link in linklists[section.settings.main_linklist_2].links %}
+                            <li class="main-menu__item"><a href="{{ link.url }}" class="main-menu__link">{{ link.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                <button class="close-button header__navigation-close-button js-close-menu"><span></span><span></span></button>
+            </nav>
+
+            <button class="menu-button js-menu-button">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+</div>
+
+
+{% comment %}
+<ul>
+    {% if customer %}
+        <li>
+            {% if customer.first_name != blank %}
+                {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
+                {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+            {% else %}
+                <a href="/account">{{ 'layout.customer.account' | t }}</a>
+            {% endif %}
+        </li>
+        <li>
+            {{ 'layout.customer.log_out' | t | customer_logout_link }}
+        </li>
+    {% else %}
+        <li>
+            {{ 'layout.customer.log_in' | t | customer_login_link }}
+        </li>
+        <li>
+            {{ 'layout.customer.create_account' | t | customer_register_link }}
+        </li>
+    {% endif %}
+</ul>
+{% endcomment %}
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image",
+        "info": "Used on Home page and Product Single page"
+      },
+        {
+            "type": "image_picker",
+            "id": "logo_dark",
+            "label": "Dark logo image",
+            "info": "Used on all other page"
+        },
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      },
+        {
+            "type": "link_list",
+            "id": "main_linklist_2",
+            "label": "Additional menu",
+            "info": "Second menu, for mobile navigation (e.g. 'footer menu')"
+        },
+        {
+            "type": "text",
+            "id": "promo_text",
+            "label": "Promo Text",
+            "default": "Free shipping on all orders over NOK 500,-"
+        }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,14 @@
+.shop-content {
+    //padding-top: 60px;
+    @include breakpoint(extra-small) {
+        //padding-top: 40px;
+    }
+}
+
+.shop-content__collection-title {
+    padding-top: 60px;
+    @include breakpoint(extra-small) {
+        padding-top: 40px;
+        font-size: 30px;
+    }
+}

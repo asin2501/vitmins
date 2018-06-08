@@ -1,0 +1,237 @@
+<section class="page-banner"
+         style="background-color: {{ section.settings.banner_bg_color }};
+         {% if section.settings.banner_image != blank %} background-image: url('{{ section.settings.banner_image | img_url: 'master' }}');{% endif %}">
+
+    <div class="container">
+        {% if section.settings.banner_title != blank %}
+            <h1 class="page-banner__title" style="color:{{ section.settings.banner_title_color }}">{{ section.settings.banner_title }}</h1>
+        {% endif %}
+    </div>
+</section>
+
+<div class="navigation-panel js-navpanel" style="background-color: {{ section.settings.nav_bg }}">
+    <div class="container">
+        <div class="navigation-panel__label js-navpanel-label">Filter by Category <span class="navigation-panel__icon">{% include 'icon-down-chevron' %}</span></div>
+        <ul class="navigation-panel__menu js-navpanel-menu">
+            <li class="navigation-panel__item"><a href="#{{ section.settings.basics_title | handleize  }}" class="navigation-panel__link js-anchor-link">{{ section.settings.basics_title }}</a></li>
+            <li class="navigation-panel__item"><a href="#{{ section.settings.subscriptions_title | handleize }}" class="navigation-panel__link js-anchor-link">{{ section.settings.subscriptions_title }}</a></li>
+            <li class="navigation-panel__item"><a href="#{{ section.settings.pricing_title | handleize }}" class="navigation-panel__link js-anchor-link">{{ section.settings.pricing_title }}</a></li>
+            <li class="navigation-panel__item"><a href="#{{ section.settings.ingredients_title | handleize }}" class="navigation-panel__link js-anchor-link">{{ section.settings.ingredients_title }}</a></li>
+        </ul>
+    </div>
+</div>
+
+{% if section.settings.basics_title != blank %}
+    <section id="{{ section.settings.basics_title | handleize  }}" class="faq-container">
+        <div class="container">
+            <h2 class="faq-container__title">{{ section.settings.basics_title }}</h2>
+            {% for block in section.blocks %}
+                {% if block.type == 'basics' %}
+                    <div class="faq-accordion js-accordion">
+                        <div class="faq-accordion__header"><h3 class="faq-accordion__title js-accordion-title">{{ block.settings.question_title }} {% include 'icon-down-chevron' %}</h3></div>
+                        <div class="faq-accordion__body js-accordion-body">
+                            {{ block.settings.question_answer }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}
+
+{% if section.settings.subscriptions_title != blank %}
+    <section id="{{ section.settings.subscriptions_title | handleize }}" class="faq-container">
+        <div class="container">
+            <h2 class="faq-container__title">{{ section.settings.subscriptions_title }}</h2>
+            {% for block in section.blocks %}
+                {% if block.type == 'subscriptions' %}
+                    <div class="faq-accordion js-accordion">
+                        <div class="faq-accordion__header"><h3 class="faq-accordion__title js-accordion-title">{{ block.settings.question_title }} {% include 'icon-down-chevron' %}</h3></div>
+                        <div class="faq-accordion__body js-accordion-body">
+                            {{ block.settings.question_answer }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}
+
+{% if section.settings.pricing_title != blank %}
+    <section id="{{ section.settings.pricing_title | handleize }}" class="faq-container">
+        <div class="container">
+            <h2 class="faq-container__title">{{ section.settings.pricing_title }}</h2>
+            {% for block in section.blocks %}
+                {% if block.type == 'pricing' %}
+                    <div class="faq-accordion js-accordion">
+                        <div class="faq-accordion__header"><h3 class="faq-accordion__title js-accordion-title">{{ block.settings.question_title }} {% include 'icon-down-chevron' %}</h3></div>
+                        <div class="faq-accordion__body js-accordion-body">
+                            {{ block.settings.question_answer }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}
+
+{% if section.settings.ingredients_title != blank %}
+    <section id="{{ section.settings.ingredients_title | handleize }}" class="faq-container">
+        <div class="container">
+            <h2 class="faq-container__title">{{ section.settings.ingredients_title }}</h2>
+            {% for block in section.blocks %}
+                {% if block.type == 'ingredients' %}
+                    <div class="faq-accordion js-accordion">
+                        <div class="faq-accordion__header"><h3 class="faq-accordion__title js-accordion-title">{{ block.settings.question_title }} {% include 'icon-down-chevron' %}</h3></div>
+                        <div class="faq-accordion__body js-accordion-body">
+                            {{ block.settings.question_answer }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}
+
+
+{% schema %}
+{
+	"name": "Page FAQ",
+	"settings": [
+        {
+            "type": "header",
+            "content": "Page banner"
+        },
+        {
+            "type": "color",
+            "id": "banner_bg_color",
+            "label": "Banner background-color",
+            "default": "#FBFAF8"
+        },
+        {
+            "type": "image_picker",
+            "id": "banner_image",
+            "label": "Banner image"
+        },
+        {
+            "type": "html",
+            "id": "banner_title",
+            "label": "Banner title"
+        },
+        {
+            "type": "color",
+            "id": "banner_title_color",
+            "label": "Banner title color",
+            "default": "#16161D"
+        },
+        {
+            "type": "header",
+            "content": "Navigation panel"
+        },
+        {
+            "type": "color",
+            "id": "nav_bg",
+            "label": "navigation background color",
+            "default": "#EBE3D7"
+        },
+        {
+            "type": "text",
+            "id": "basics_title",
+            "label": "The basics title",
+            "default": "The Basics"
+        },
+        {
+            "type": "text",
+            "id": "subscriptions_title",
+            "label": "Subscriptions title",
+            "default": "Subscriptions"
+        },
+        {
+            "type": "text",
+            "id": "pricing_title",
+            "label": "Pricing title",
+            "default": "Pricing"
+        },
+        {
+            "type": "text",
+            "id": "ingredients_title",
+            "label": "Ingredients title",
+            "default": "Ingredients"
+        }
+	],
+    "blocks": [
+        {
+            "type": "basics",
+            "name": "Basics question",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "question_title",
+                    "label": "Question title",
+                    "default": "Your question"
+                },
+                {
+                    "type": "richtext",
+                    "id": "question_answer",
+                    "label": "Question answer",
+                    "default": "<p>Your answer</p>"
+                }
+            ]
+        },
+        {
+            "type": "subscriptions",
+            "name": "Subscriptions question",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "question_title",
+                    "label": "Question title",
+                    "default": "Your question"
+                },
+                {
+                    "type": "richtext",
+                    "id": "question_answer",
+                    "label": "Question answer",
+                    "default": "<p>Your answer 222</p>"
+                }
+            ]
+        },
+        {
+            "type": "pricing",
+            "name": "Pricing question",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "question_title",
+                    "label": "Question title",
+                    "default": "Your question"
+                },
+                {
+                    "type": "richtext",
+                    "id": "question_answer",
+                    "label": "Question answer",
+                    "default": "<p>Your answer</p>"
+                }
+            ]
+        },
+        {
+            "type": "ingredients",
+            "name": "Ingredients question",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "question_title",
+                    "label": "Question title",
+                    "default": "Your question"
+                },
+                {
+                    "type": "richtext",
+                    "id": "question_answer",
+                    "label": "Question answer",
+                    "default": "<p>Your answer</p>"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

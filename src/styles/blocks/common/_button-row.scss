@@ -1,0 +1,19 @@
+.button-row {
+    display: flex;
+    margin: 0 -10px;
+    justify-content: center;
+
+    .btn {
+        width: 50%;
+        margin: 10px;
+    }
+
+    @include breakpoint(small-tablet-portrait) {
+        flex-wrap: wrap;
+
+        .btn {
+            width: 100%;
+            margin: 5px 10px;
+        }
+    }
+}

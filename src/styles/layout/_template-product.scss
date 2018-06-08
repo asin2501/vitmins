@@ -1,0 +1,25 @@
+.template-product {
+    .main-menu__item a, .main-menu__link {
+        color: #fff;
+
+        @include breakpoint(extra-small) {
+            color: $black;
+        }
+    }
+
+    .header__cart-link {
+        color: #fff;
+    }
+
+    .main-menu__cart {
+        &::after {
+            background-color: #fff;
+        }
+    }
+    
+    .menu-button {
+        span {
+            background-color: #fff;
+        }
+    }
+}

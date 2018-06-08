@@ -1,0 +1,41 @@
+//typography: base styles for fonts, p, a, standard h1, h2 ...
+
+h1, h2 {
+    font-size: 60px;
+    font-weight: normal;
+
+    @include breakpoint(extra-small) {
+        font-size: 45px;
+    }
+}
+
+h3 {
+    font-size: 30px;
+    font-weight: normal;
+    @include breakpoint(extra-small) {
+        font-size: 18px;
+    }
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.big-text {
+    font-size: 30px;
+    @include breakpoint(extra-small) {
+        font-size: 20px;
+    }
+}
+
+html,
+body {
+    background-color: #fff;
+    font-family: $moderat-light;
+    color: $black;
+}
+
+a {
+    color: inherit;
+}

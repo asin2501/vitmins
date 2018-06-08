@@ -1,0 +1,22 @@
+.addresses {
+  width: 100%;
+  max-width: 415px;
+
+  .label-inline {
+    display: inline-block;
+  }
+
+  form {
+    text-align: left;
+  }
+
+  .account-details {
+    margin-bottom: 20px;
+  }
+
+  .address-block {
+    &:not(:last-child) {
+      margin-bottom: 50px;
+    }
+  }
+}

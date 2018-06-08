@@ -1,0 +1,141 @@
+.about-section {
+  width: 100%;
+
+
+  .about-section__block {
+    display: flex;
+    padding: 60px 0;
+    max-width: 1366px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+
+    &:nth-child(even) {
+
+      @include breakpoint(extra-small) {
+        padding-top: 0;
+
+        .about-section__col {
+
+          &:last-child {
+            order: 0;
+          }
+        }
+
+        .about-section__col--img {
+          padding-top: 0;
+          padding-bottom: 30px;
+        }
+      }
+    }
+
+    @include breakpoint(small) {
+      padding: 30px 0;
+    }
+
+    @include breakpoint(extra-small) {
+      flex-direction: column;
+    }
+  }
+
+  .about-section__title {
+    margin-bottom: 30px;
+
+    @include breakpoint(extra-small) {
+      font-size: 30px;
+    }
+  }
+
+  .about-section__col {
+    width: 50%;
+    padding-right: 40px;
+    padding-left: 40px;
+
+    @include breakpoint(extra-small) {
+      width: 100%;
+      padding-right: 30px;
+      padding-left: 30px;
+
+      &:last-child {
+        order: -1;
+      }
+    }
+  }
+
+  .about-section__col--full {
+    width: 100%;
+  }
+
+  .about-section__col--img {
+    display: flex;
+    justify-content: center;
+
+    img {
+      object-fit: cover;
+    }
+
+    @include breakpoint(small) {
+      padding-top: 30px;
+      padding-right: 10px;
+      padding-bottom: 0;
+      padding-left: 10px;
+    }
+
+    @include breakpoint(extra-small) {
+      display: block;
+      padding-top: 0;
+      padding-bottom: 30px;
+      padding-right: 20px;
+      padding-left: 20px;
+      text-align: center;
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+
+  &:nth-child(even) {
+    background-color: #FBFAF8;
+  }
+
+  .about-section__text {
+
+    p {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .about-section__link {
+    display: inline-block;
+    margin-top: 30px;
+  }
+}
+
+.about-section--invert {
+  .about-section__col {
+
+    &:nth-child(even) {
+      order: -1;
+    }
+  }
+
+  @include breakpoint(extra-small) {
+
+    .about-section__col--img {
+      padding-top: 0;
+      padding-bottom: 30px;
+    }
+  }
+
+  .about-section__block {
+
+    &:nth-child(even) {
+
+      .about-section__col--img {
+        padding-top: 30px;
+      }
+    }
+  }
+}

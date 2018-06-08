@@ -1,0 +1,45 @@
+.link-section__inner {
+    @include home-section;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        border: none;
+        &:hover {
+            border: none;
+        }
+    }
+
+
+}
+
+.link-section__card {
+    background-color: $plein_pink;
+    padding: 60px;
+    max-width: 586px;
+
+    @include breakpoint(extra-small){
+        padding:30px;
+    }
+}
+
+.link-section__card--blue{
+    background-color: $plein_blue;
+}
+
+.link-section__text{
+    margin-bottom:32px;
+
+    @include breakpoint(extra-small){
+        margin-bottom:15px;
+    }
+}
+
+.link-section__text +.link-section__text{
+    margin-bottom:55px;
+
+    @include breakpoint(extra-small){
+        margin-bottom:25px;
+    }
+}

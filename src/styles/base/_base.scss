@@ -1,0 +1,116 @@
+@import url('_variables.scss');
+@import url('_fonts.scss');
+@import url('_typography.scss');
+@import url('_utils.scss');
+
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    //display: flex;
+    //flex-direction: column;
+    //font-size: 20px;
+    //line-height: 1.2;
+}
+
+.global-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.content {
+    position: relative;
+    flex: 1 0 auto;
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+        border-bottom: 1px solid $black;
+    }
+
+    &:hover,
+    &:focus {
+        outline: none;
+    }
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.errors {
+    color: red;
+    margin: 15px 0;
+}
+
+.scroll-no {
+    position: relative;
+    overflow: hidden;
+}
+
+.hide {
+    display: none;
+}
+
+.hide-xs {
+    @include breakpoint(extra-small) {
+        display: none;
+    }
+}
+
+.hide-md {
+    @include breakpoint(medium) {
+        display: none;
+    }
+}
+
+.visible-xs {
+    display: none;
+    @include breakpoint(extra-small) {
+        display: block;
+    }
+}
+
+.visible-md {
+    display: none;
+    @include breakpoint(medium) {
+        display: block;
+    }
+}

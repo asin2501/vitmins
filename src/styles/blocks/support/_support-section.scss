@@ -1,0 +1,45 @@
+.support-section {
+  width: 100%;
+
+  .support-section-content {
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 90px;
+    padding-right: 30px;
+    padding-bottom: 80px;
+    padding-left: 30px;
+    text-align: center;
+  }
+
+  .support-section__title {
+    margin-bottom: 40px;
+  }
+
+  .support-section__text {
+    margin-bottom: 60px;
+
+    p {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .support-section__text--additional {
+
+    p {
+      &:not(:last-child) {
+        margin-bottom: 46px;
+      }
+    }
+  }
+
+  &:nth-child(even) {
+    background-color: #FBFAF8;
+  }
+}

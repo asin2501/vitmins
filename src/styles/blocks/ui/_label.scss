@@ -1,0 +1,19 @@
+.label {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+
+    @include breakpoint(extra-small) {
+        font-size: 15px;
+    }
+}
+
+.label--required {
+    &:before {
+        content: '*';
+        position: absolute;
+        top: 0;
+        right: -10px;
+        color: $black;
+    }
+}

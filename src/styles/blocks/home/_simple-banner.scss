@@ -1,0 +1,61 @@
+.simple-banner {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+
+    @include home-section;
+}
+
+.simple-banner__with-bg {
+    color: #fff;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.simple-banner__inner {
+    margin-top: -20px;
+    max-width: 746px;
+    margin-right: auto;
+    margin-left: auto;
+
+    a {
+        border: none;
+        &:hover {
+            border: none;
+        }
+    }
+
+    @include breakpoint(extra-small) {
+        max-width: 90%;
+    }
+
+    @media (max-width: 340px) {
+        max-width: 100%;
+    }
+}
+
+.side-text{
+    position: absolute;
+    left:50%;
+    top:20%;
+    color:#fff;
+}
+
+.simple-banner__title {
+    + * {
+        margin-top: 28px;
+    }
+}
+
+.simple-banner__subtitle {
+    margin-bottom: 30px;
+}
+
+.simple-banner__subtitle {
+    max-width: 670px;
+    margin-left: auto;
+    margin-right: auto;
+}

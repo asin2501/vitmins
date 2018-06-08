@@ -1,0 +1,656 @@
+{% comment %} Super Custom Fields Variables {% endcomment %}
+{% assign collection_slider_description = collection.metafields.sf_collection.slider_description %}
+
+
+<section class="page-banner"
+         style="background-color: {{ section.settings.banner_bg_color }};
+         {% if section.settings.use_collection_img == true %} background-image: url('{{ collection.image | img_url: 'master' }}');{% endif %}">
+
+    <div class="container">
+        {% if section.settings.banner_title != blank %}
+                <h1 class="page-banner__title" style="color:{{ section.settings.banner_title_color }}">{{ section.settings.banner_title }}</h1>
+            {% else %}
+                <h1 class="page-banner__title" style="color:{{ section.settings.banner_title_color }}">{{ collection.description }}</h1>
+        {% endif %}
+    </div>
+</section>
+
+<div class="shop-content">
+
+    {% case section.settings.collection_layout %}
+        {% when 'grid' %}
+        <!-- grid products -->
+        <div class="container">
+            <h3 class="shop-content__collection-title">{{ collection.title }}</h3>
+            <div class="products-row">
+                {% for product in collection.products %}
+                    <div class="product-item">
+                        <div class="product-card">
+                            <a href="{{ product.url | within: collection }}" class="product-card__image product-card__image--square"
+                               style="background-image: url('{{ product.featured_image.src | img_url: "master" }}');"></a>
+                            <h4 class="product-card__title">{{ product.title }}</h4>
+                            <span class="product-card__price">
+                             {% if product.compare_at_price > product.price %}
+
+                                 {% if product.price_varies %}
+                                     {%- assign sale_price = product.price | money -%}
+                                     {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                                 {% else %}
+                                     {{ 'products.product.on_sale' | t }}
+                                     {{ product.price | money }}
+                                 {% endif %}
+
+                             {% else %}
+
+                                 {% if product.price_varies %}
+                                     {%- assign price = product.price | money -%}
+                                     {{ 'products.product.from_text_html' | t: price: price }}
+                                 {% else %}
+                                     {{ product.price | money }}
+                                 {% endif %}
+
+                             {% endif %}
+                            </span>
+                            <div class="product-card__footer">
+                                <a href="{{ product.url | within: collection }}">More info</a>
+                                <div class="product-card__add">
+                                    <span class="js-add-to-cart" data-variant-id="{{ product.selected_or_first_available_variant.id }}">+ Add to cart</span>
+
+                                    <div class="product-inp-qty js-qty-widget" data-variant-id="{{product.selected_or_first_available_variant.id   }}">
+                                        <button type="button" class="product-inp-qty__minus js-minus">-</button>
+                                        <span class="product-inp-qty__input js-val">1</span>
+                                        <button type="button" class="product-inp-qty__plus js-plus">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- grid products end -->
+
+        {% when 'list' %}
+        <!-- List products -->
+        <ul class="products-list">
+            {% for product in collection.products %}
+                {% assign product_feature_descr = product.metafields.sf_product.feature_list_description %}
+                <li class="products-list__item">
+                    <div class="container">
+                        <div class="products-list__item-inner">
+                            <div class="products-list__item-info">
+                                <div class="products-list__item-header">
+                                    <h3 class="products-list__item-title">{{ product.title }}</h3>
+                                    <div class="products-list__item-add hide-md">
+                                        <span class="js-add-to-cart" data-variant-id="{{ product.selected_or_first_available_variant.id }}">+ Add to cart</span>
+
+                                        <div class="product-inp-qty js-qty-widget" data-variant-id="{{product.selected_or_first_available_variant.id   }}">
+                                            <button type="button" class="product-inp-qty__minus js-minus">-</button>
+                                            <span class="product-inp-qty__input js-val">1</span>
+                                            <button type="button" class="product-inp-qty__plus js-plus">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="products-list__item-price">
+                                        {% if product.compare_at_price > product.price %}
+
+                                            {% if product.price_varies %}
+                                                {%- assign sale_price = product.price | money -%}
+                                                {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                                            {% else %}
+                                                {{ 'products.product.on_sale' | t }}
+                                                {{ product.price | money }}
+                                            {% endif %}
+
+                                        {% else %}
+
+                                            {% if product.price_varies %}
+                                                {%- assign price = product.price | money -%}
+                                                {{ 'products.product.from_text_html' | t: price: price }}
+                                            {% else %}
+                                                {{ product.price | money }}
+                                            {% endif %}
+
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="products-list__item-body">
+                                    {% if product_feature_descr %}
+                                        <div class="products-list__item-description">
+                                            {{ product_feature_descr }}
+                                        </div>
+                                    {% endif %}
+
+                                    <div class="products-list__item-footer">
+                                        <a href="{{ product.url | within: collection }}">More info</a>
+
+                                        <div class="products-list__item-add visible-md">
+                                            <span class="js-add-to-cart" data-variant-id="{{ product.selected_or_first_available_variant.id }}">+ Add to cart</span>
+                                            <div class="product-inp-qty  js-qty-widget" data-variant-id="{{product.selected_or_first_available_variant.id   }}">
+                                                <button type="button" class="product-inp-qty__minus js-minus">-</button>
+                                                <span class="product-inp-qty__input js-val">1</span>
+                                                <button type="button" class="product-inp-qty__plus js-plus">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="products-list__item-image">
+                                <a href="{{ product.url | within: collection }}" class="products-list__item-image-inner" style="background-image: url('{{ product.featured_image.src | img_url: "master" }}');"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <!-- List products end -->
+
+        {% when 'slider' %}
+        <!-- Products slider -->
+        <div class="collection-slider" style="background-color: {{ section.settings.products_slider_bg }}">
+            <div class="collection-slider__info">
+                <h3 class="collection-slider__title">{{ collection.title }}</h3>
+                <div class="collection-slider__description">
+                    {% if collection_slider_description %}
+                        {{ collection_slider_description }}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="collection-slider__wrapper">
+                <div class="collection-slider__slider js-products-slider" data-slick='{ "autoplaySpeed": {{ section.settings.slider_auto_play_speed }} }'>
+                    {% for product in collection.products %}
+                        <div>
+                            <div class="collection-slider__slide">
+                                <div class="product-card">
+                                    <a href="{{ product.url | within: collection }}" class="product-card__image product-card__image--rectangle"
+                                       style="background-image: url('{{ product.featured_image.src | img_url: "master" }}');"></a>
+                                    <h4 class="product-card__title">{{ product.title }}</h4>
+                                    <span class="product-card__price">
+                                 {% if product.compare_at_price > product.price %}
+
+                                     {% if product.price_varies %}
+                                         {%- assign sale_price = product.price | money -%}
+                                         {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                                     {% else %}
+                                         {{ 'products.product.on_sale' | t }}
+                                         {{ product.price | money }}
+                                     {% endif %}
+
+                                 {% else %}
+
+                                     {% if product.price_varies %}
+                                         {%- assign price = product.price | money -%}
+                                         {{ 'products.product.from_text_html' | t: price: price }}
+                                     {% else %}
+                                         {{ product.price | money }}
+                                     {% endif %}
+
+                                 {% endif %}
+                                </span>
+                                    <div class="product-card__footer">
+                                        <a href="{{ product.url | within: collection }}">More info</a>
+                                        <div class="product-card__add">
+                                            <span class="js-add-to-cart" data-variant-id="{{ product.selected_or_first_available_variant.id }}">+ Add to cart</span>
+
+                                            <div class="product-inp-qty js-qty-widget" data-variant-id="{{product.selected_or_first_available_variant.id   }}">
+                                                <button type="button" class="product-inp-qty__minus js-minus">-</button>
+                                                <span class="product-inp-qty__input js-val">1</span>
+                                                <button type="button" class="product-inp-qty__plus js-plus">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Products slider end -->
+    {% endcase %}
+
+    <!-- Promo full-width banner -->
+    {% if section.settings.bg_img != blank %}
+        <div class="propose-banner">
+            <h3 class="propose-banner__text" style="color: {{ section.settings.title_color_1 }}">{{ section.settings.title }}</h3>
+            <img class="propose-banner__img" src="{{ section.settings.bg_img | img_url: 'master' }}" alt="{{ section.settings.bg_img.alt }}">
+        </div>
+    {% endif %}
+    <!-- Promo full-width banner end -->
+
+
+    {% case section.settings.collection_layout %}
+    {% when 'grid' %}
+    <!-- grid products -->
+    <div class="container">
+        <h3 class="shop-content__collection-title">{{ collection.title }}</h3>
+        <div class="products-row">
+            {% for product in collection.products %}
+                <div class="product-item">
+                    <div class="product-card">
+                        <a href="{{ product.url | within: collection }}" class="product-card__image product-card__image--square"
+                           style="background-image: url('{{ product.featured_image.src | img_url: "master" }}');"></a>
+                        <h4 class="product-card__title">{{ product.title }}</h4>
+                        <span class="product-card__price">
+                             {% if product.compare_at_price > product.price %}
+
+                                 {% if product.price_varies %}
+                                     {%- assign sale_price = product.price | money -%}
+                                     {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                                 {% else %}
+                                     {{ 'products.product.on_sale' | t }}
+                                     {{ product.price | money }}
+                                 {% endif %}
+
+                             {% else %}
+
+                                 {% if product.price_varies %}
+                                     {%- assign price = product.price | money -%}
+                                     {{ 'products.product.from_text_html' | t: price: price }}
+                                 {% else %}
+                                     {{ product.price | money }}
+                                 {% endif %}
+
+                             {% endif %}
+                            </span>
+                        <div class="product-card__footer">
+                            <a href="{{ product.url | within: collection }}">More info</a>
+                            <div class="product-card__add">
+                                <span class="js-add-to-cart" data-variant-id="{{ product.selected_or_first_available_variant.id }}">+ Add to cart</span>
+
+                                <div class="product-inp-qty js-qty-widget" data-variant-id="{{product.selected_or_first_available_variant.id   }}">
+                                    <button type="button" class="product-inp-qty__minus js-minus">-</button>
+                                    <span class="product-inp-qty__input js-val">1</span>
+                                    <button type="button" class="product-inp-qty__plus js-plus">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- grid products end -->
+
+    {% when 'list' %}
+    <!-- List products -->
+    <ul class="products-list">
+        {% for product in collection.products %}
+            {% assign product_feature_descr = product.metafields.sf_product.feature_list_description %}
+            <li class="products-list__item">
+                <div class="container">
+                    <div class="products-list__item-inner">
+                        <div class="products-list__item-info">
+                            <div class="products-list__item-header">
+                                <h3 class="products-list__item-title">{{ product.title }}</h3>
+                                <div class="products-list__item-add hide-xs">
+                                    <span class="js-add-to-cart" data-variant-id="{{ product.selected_or_first_available_variant.id }}">+ Add to cart</span>
+
+                                    <div class="product-inp-qty js-qty-widget" data-variant-id="{{product.selected_or_first_available_variant.id   }}">
+                                        <button type="button" class="product-inp-qty__minus js-minus">-</button>
+                                        <span class="product-inp-qty__input js-val">1</span>
+                                        <button type="button" class="product-inp-qty__plus js-plus">+</button>
+                                    </div>
+                                </div>
+                                <div class="products-list__item-price">
+                                    {% if product.compare_at_price > product.price %}
+
+                                        {% if product.price_varies %}
+                                            {%- assign sale_price = product.price | money -%}
+                                            {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                                        {% else %}
+                                            {{ 'products.product.on_sale' | t }}
+                                            {{ product.price | money }}
+                                        {% endif %}
+
+                                    {% else %}
+
+                                        {% if product.price_varies %}
+                                            {%- assign price = product.price | money -%}
+                                            {{ 'products.product.from_text_html' | t: price: price }}
+                                        {% else %}
+                                            {{ product.price | money }}
+                                        {% endif %}
+
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="products-list__item-body">
+                                {% if product_feature_descr %}
+                                    <div class="products-list__item-description">
+                                        {{ product_feature_descr }}
+                                    </div>
+                                {% endif %}
+
+                                <div class="products-list__item-footer">
+                                    <a href="{{ product.url | within: collection }}">More info</a>
+
+                                    <div class="products-list__item-add visible-xs">
+                                        <span class="js-add-to-cart" data-variant-id="{{ product.selected_or_first_available_variant.id }}">+ Add to cart</span>
+                                        <div class="product-inp-qty  js-qty-widget" data-variant-id="{{product.selected_or_first_available_variant.id   }}">
+                                            <button type="button" class="product-inp-qty__minus js-minus">-</button>
+                                            <span class="product-inp-qty__input js-val">1</span>
+                                            <button type="button" class="product-inp-qty__plus js-plus">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="products-list__item-image">
+                            <a href="{{ product.url | within: collection }}" class="products-list__item-image-inner" style="background-image: url('{{ product.featured_image.src | img_url: "master" }}');"></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <!-- List products end -->
+
+    {% when 'slider' %}
+    <!-- Products slider -->
+    <div class="collection-slider" style="background-color: {{ section.settings.products_slider_bg }}">
+        <div class="collection-slider__info">
+            <h3 class="collection-slider__title">{{ collection.title }}</h3>
+            <div class="collection-slider__description">
+                {% if collection_slider_description %}
+                    {{ collection_slider_description }}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="collection-slider__wrapper">
+            <div class="collection-slider__slider js-products-slider" data-slick='{ "autoplaySpeed": {{ section.settings.slider_auto_play_speed }} }'>
+                {% for product in collection.products %}
+                    <div>
+                        <div class="collection-slider__slide">
+                            <div class="product-card">
+                                <a href="{{ product.url | within: collection }}" class="product-card__image product-card__image--rectangle"
+                                   style="background-image: url('{{ product.featured_image.src | img_url: "master" }}');"></a>
+                                <h4 class="product-card__title">{{ product.title }}</h4>
+                                <span class="product-card__price">
+                                 {% if product.compare_at_price > product.price %}
+
+                                     {% if product.price_varies %}
+                                         {%- assign sale_price = product.price | money -%}
+                                         {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                                     {% else %}
+                                         {{ 'products.product.on_sale' | t }}
+                                         {{ product.price | money }}
+                                     {% endif %}
+
+                                 {% else %}
+
+                                     {% if product.price_varies %}
+                                         {%- assign price = product.price | money -%}
+                                         {{ 'products.product.from_text_html' | t: price: price }}
+                                     {% else %}
+                                         {{ product.price | money }}
+                                     {% endif %}
+
+                                 {% endif %}
+                                </span>
+                                <div class="product-card__footer">
+                                    <a href="{{ product.url | within: collection }}">More info</a>
+                                    <div class="product-card__add">
+                                        <span class="js-add-to-cart" data-variant-id="{{ product.selected_or_first_available_variant.id }}">+ Add to cart</span>
+
+                                        <div class="product-inp-qty js-qty-widget" data-variant-id="{{product.selected_or_first_available_variant.id   }}">
+                                            <button type="button" class="product-inp-qty__minus js-minus">-</button>
+                                            <span class="product-inp-qty__input js-val">1</span>
+                                            <button type="button" class="product-inp-qty__plus js-plus">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Products slider end -->
+    {% endcase %}
+
+    <!-- Promo full-width banner -->
+    {% if section.settings.bg_img_2 != blank %}
+        <div class="propose-banner">
+            <h3 class="propose-banner__text" style="color: {{ section.settings.title_color_2 }}">{{ section.settings.title_2 }}</h3>
+            <img class="propose-banner__img" src="{{ section.settings.bg_img_2 | img_url: 'master' }}" alt="{{ section.settings.bg_img_2.alt }}">
+        </div>
+    {% endif %}
+    <!-- Promo full-width banner end -->
+
+</div>
+
+
+
+
+
+
+{% comment %}  *** DEFAULT BASE CODE OF THEMPLATE ***
+
+
+{% paginate collection.products by 12 %}
+<header role="banner">
+    <h1>{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+        <div class="rte">
+            {{ collection.description }}
+        </div>
+    {% endif %}
+
+    {% if collection.all_tags.size > 0 %}
+        <ul>
+            {% for tag in collection.all_tags %}
+                {% if current_tags contains tag %}
+                    <li class="active">
+                        {{ tag | link_to_remove_tag: tag }}
+                    </li>
+                {% else %}
+                    <li>
+                        {{ tag | link_to_tag: tag }}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</header>
+
+<div>
+    {% for product in collection.products %}
+        <div>
+            {% if product.featured_image != blank %}
+                <a href="{{ product.url | within: collection }}">
+                    {{ product.featured_image.src | img_url: '480x480' | img_tag: product.featured_image.alt }}
+                </a>
+            {% endif %}
+
+            <p>
+                <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+            </p>
+            <p>
+                {% if product.compare_at_price > product.price %}
+
+                    {% if product.price_varies %}
+                        {%- assign sale_price = product.price | money -%}
+                        {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                    {% else %}
+                        {{ 'products.product.on_sale' | t }}
+                        {{ product.price | money }}
+                    {% endif %}
+
+                {% else %}
+
+                    {% if product.price_varies %}
+                        {%- assign price = product.price | money -%}
+                        {{ 'products.product.from_text_html' | t: price: price }}
+                    {% else %}
+                        {{ product.price | money }}
+                    {% endif %}
+
+                {% endif %}
+
+                {% if product.compare_at_price > product.price %}
+                    <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                    <s>{{ product.compare_at_price | money }}</s>
+                {% endif %}
+
+                {% unless product.available %}
+                {{ 'products.product.sold_out' | t }}
+                {% endunless %}
+            </p>
+        </div>
+
+    {% else %}
+        {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+            {% for i in (1..8) %}
+                <a href="#">
+                    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                    {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                </a>
+
+                <p>
+                    <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
+                </p>
+
+                <p>
+                    {{ 1999 | money }}
+                </p>
+            {% endfor %}
+        {% else %}
+            <p>{{ 'collections.general.no_matches' | t }}</p>
+        {% endif %}
+
+    {% endfor %}
+</div>
+
+{% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+{% endif %}
+{% endpaginate %}
+
+{% endcomment %}
+
+
+<style>
+    @media (max-width: 480px) {
+        .propose-banner__text {
+            color: #000!important;
+        }
+    }
+
+</style>
+
+
+
+{% schema %}
+{
+    "name": "Shop",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Page Layout"
+        },
+        {
+            "type": "select",
+            "id": "collection_layout",
+            "label": "Collection products layout",
+            "options": [
+                { "value": "grid", "label": "Grid layout" },
+                { "value": "list", "label": "List layout" },
+                { "value": "slider", "label": "Slider layout" }
+            ],
+            "default": "grid"
+        },
+        {
+            "type": "header",
+            "content": "Shop banner"
+        },
+        {
+            "type": "color",
+            "id": "banner_bg_color",
+            "label": "Banner background-color",
+            "default": "#FBFAF8"
+        },
+        {
+            "type":      "checkbox",
+            "id":        "use_collection_img",
+            "label":     "Enable collection image on banner",
+            "default":   false
+        },
+        {
+            "type": "html",
+            "id": "banner_title",
+            "label": "Banner title",
+            "info": "Use collection description for unique text on collection pages. Or enter text in field for same text on the all collection pages"
+        },
+        {
+            "type": "color",
+            "id": "banner_title_color",
+            "label": "Banner title color",
+            "default": "#16161D"
+        },
+        {
+            "type": "header",
+            "content": "Promo full-width banner"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default":"Get the premium box on all orders over NOK 500,-"
+        },
+        {
+            "type": "color",
+            "id": "title_color_1",
+            "label": "Title color",
+            "default": "#fff"
+        },
+        {
+            "type":"image_picker",
+            "id":"bg_img",
+            "label":"Background Image"
+        },
+        {
+            "type": "text",
+            "id": "title_2",
+            "label": "Title for second banner",
+            "default":"Get the premium box on all orders over NOK 500,-"
+        },
+        {
+            "type": "color",
+            "id": "title_color_2",
+            "label": "Title color",
+            "default": "#fff"
+        },
+        {
+            "type":"image_picker",
+            "id":"bg_img_2",
+            "label":"Background Image for second banner"
+        },
+        {
+            "type": "header",
+            "content": "Products slider"
+        },
+        {
+            "type": "range",
+            "id": "slider_auto_play_speed",
+            "label": "Slider autoplay speed (ms)",
+            "min": 2000,
+            "max": 9000,
+            "step": 1000,
+            "default": 3000
+        },
+        {
+            "type": "color",
+            "id": "products_slider_bg",
+            "label": "Slider background color",
+            "default": "#fff"
+        }
+    ]
+}
+{% endschema %}

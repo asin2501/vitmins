@@ -1,0 +1,193 @@
+{% schema %}
+    {
+        "name"     : "About",
+        "settings" : [
+            {
+                "type": "header",
+                "content": "Page banner"
+            },
+            {
+                "type": "color",
+                "id": "banner_bg_color",
+                "label": "Banner background-color",
+                "default": "#FBFAF8"
+            },
+            {
+                "type": "image_picker",
+                "id": "banner_image",
+                "label": "Banner image"
+            },
+            {
+                "type": "html",
+                "id": "banner_title",
+                "label": "Banner title"
+            },
+            {
+                "type": "color",
+                "id": "banner_title_color",
+                "label": "Banner title color",
+                "default": "#16161D"
+            },
+            {
+                "type"    : "color",
+                "id"      : "nav_bg",
+                "label"   : "navigation background color",
+                "default" : "#EBE3D7"
+            }
+        ],
+        "blocks"   : [
+            {
+                "type"     : "select",
+                "name"     : "about article",
+                "settings" : [
+                    {
+                        "id"      : "block_title",
+                        "type"    : "text",
+                        "label"   : "Block title",
+                        "default" : "Our story"
+                    },
+                    {
+                        "id"      : "block_text",
+                        "type"    : "richtext",
+                        "label"   : "Text for section 1"
+                    },
+                    {
+                        "id"      : "block_image",
+                        "type"    : "image_picker",
+                        "label"   : "Image for section 1"
+                    },
+                    {
+                        "id"      : "btn_text",
+                        "type"    : "text",
+                        "label"   : "Text for link 1"
+                    },
+                    {
+                        "id"      : "link_url",
+                        "type"    : "url",
+                        "label"   : "Link in section 1"
+                    },
+                    {
+                        "id"      : "block_text2",
+                        "type"    : "richtext",
+                        "label"   : "Text for section 2"
+                    },
+                    {
+                        "id"      : "block_image2",
+                        "type"    : "image_picker",
+                        "label"   : "Image for section 2"
+                    },
+                    {
+                        "id"      : "btn_text2",
+                        "type"    : "text",
+                        "label"   : "Text for link 2"
+                    },
+                    {
+                        "id"      : "link_url2",
+                        "type"    : "url",
+                        "label"   : "Link in section 2"
+                    },
+                    {
+                        "type"    : "radio",
+                        "id"      : "block_invert",
+                        "label"   : "Model of view",
+                        "options" : [
+                            {
+                                "value" : "default",
+                                "label" : "Default"
+                            },
+                            {
+                                "value" : "invert",
+                                "label" : "Invert"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
+
+<section class="page-banner"
+         style="background-color: {{ section.settings.banner_bg_color }};
+         {% if section.settings.banner_image != blank %} background-image: url('{{ section.settings.banner_image | img_url: 'master' }}');{% endif %}">
+
+    <div class="container">
+        {% if section.settings.banner_title != blank %}
+            <h1 class="page-banner__title" style="color:{{ section.settings.banner_title_color }}">{{ section.settings.banner_title }}</h1>
+        {% endif %}
+    </div>
+</section>
+
+<div class="about-page">
+
+    {% if section.blocks != blank %}
+        <div class="navigation-panel js-navpanel" style="background-color: {{ section.settings.nav_bg }}">
+            <div class="container">
+                <div class="navigation-panel__label js-navpanel-label">Filter by section<span class="navigation-panel__icon">{% include 'icon-down-chevron' %}</span></div>
+                <ul class="navigation-panel__menu js-navpanel-menu">
+                    {% for block in section.blocks %}
+                        <li class="navigation-panel__item"><a href="#{{ block.settings.block_title | handleize }}" class="navigation-panel__link js-anchor-link">{{ block.settings.block_title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="about-page__content">
+        {% for block in section.blocks %}
+            <div class="about-section {% if block.settings.block_invert == "invert" %}about-section--invert{% endif %}">
+
+                    {% if block.settings.block_text != blank and block.settings.block_image != blank  %}
+                        <div class="about-section__block">
+                            <div class="about-section__col">
+                                {% if block.settings.block_title %}
+                                    <h3 id="{{ block.settings.block_title | handleize }}" class="about-section__title">{{ block.settings.block_title }}</h3>
+                                {% endif %}
+                                <div class="about-section__text">{{ block.settings.block_text }}</div>
+                                {% if block.settings.link_url != blank %}
+                                    <a class="about-section__link" href="{{ block.settings.link_url }}">{{ block.settings.btn_text }} <span class="line-arrow">&minus;></span></a>
+                                {% endif %}
+                            </div>
+
+                            <div class="about-section__col about-section__col--img">
+                                <img src="{{  block.settings.block_image | img_url: 'master' }}" alt="about_img">
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if block.settings.block_text2 != blank  %}
+
+                        {% if block.settings.block_image2 != blank and block.settings.block_text2 != blank  %}
+                            <div class="about-section__block">
+                                <div class="about-section__col about-section__col--img">
+                                    <img src="{{  block.settings.block_image2 | img_url: 'master' }}" alt="about_img">
+                                </div>
+
+                                <div class="about-section__col">
+                                    <div class="about-section__text">{{ block.settings.block_text2 }}</div>
+                                    {% if block.settings.link_url2 != blank %}
+                                        <a href="{{ block.settings.link_url2 }}">{{ block.settings.btn_text2 }} <span class="line-arrow">&minus;></span></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        {% endif %}
+
+                        {% if block.settings.block_image2 == blank and block.settings.block_text2 != blank  %}
+                            <div class="about-section__block">
+                                <div class="about-section__col about-section__col--full">
+                                    <div class="about-section__text">{{ block.settings.block_text2 }}</div>
+                                    {% if block.settings.link_url2 != blank %}
+                                        <a href="{{ block.settings.link_url2 }}">{{ block.settings.btn_text2 }} <span class="line-arrow">&minus;></span></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        {% endif %}
+
+                    {% endif %}
+
+            </div>
+        {% endfor %}
+    </div>
+</div>

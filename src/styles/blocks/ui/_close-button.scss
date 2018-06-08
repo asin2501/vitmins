@@ -1,0 +1,31 @@
+.close-button {
+    position: relative;
+    width: 24px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+    span {
+        display: block;
+        background-color: #000;
+        height: 2px;
+
+        &:nth-child(1) {
+            transform: rotate(45deg);
+            transform-origin: 0 0;
+        }
+
+        &:nth-child(2) {
+            transform: rotate(-45deg) translateY(0);
+            transform-origin: 17px 9px;
+        }
+    }
+}

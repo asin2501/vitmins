@@ -1,0 +1,76 @@
+<section style="background-color: {{ section.settings.block_bg }};">
+  <div class="container">
+
+    <div class="media-block">
+      <div class="media-block__image {% if section.settings.image_position == "right" %}media-block__image--right {% endif %} ">
+          {% if section.settings.media_image != blank %}
+            <a href="{{ section.settings.block_link_url }}"><img src="{{ section.settings.media_image | img_url: "master" }}" alt="{{ section.settings.media_image.alt }}"></a>
+          {% endif %}
+      </div>
+      <div class="media-block__content {% if section.settings.image_position == "right" %}media-block__content--left{% endif %}">
+        <h2 class="media-block__title">{{ section.settings.block_title }}</h2>
+        <a class="media-block__link" href="{{ section.settings.block_link_url }}">{{ section.settings.block_link_title }} <span class="line-arrow">&minus;></span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Media block",
+  "settings": [
+  {
+    "type": "image_picker",
+    "id": "media_image",
+    "label": "Image"
+  },
+  {
+    "type": "text",
+    "id": "block_title",
+    "label": "Block title",
+    "default": "Only essential ingredients"
+  },
+  {
+    "type": "text",
+    "id": "block_link_title",
+    "label": "Link title",
+    "default": "Read more"
+  },
+  {
+    "type": "url",
+    "id": "block_link_url",
+    "label": "Link URL"
+  },
+  {
+    "type": "color",
+    "id": "block_bg",
+    "label": "Block background color",
+    "default": "#ffffff"
+  },
+  {
+    "type": "select",
+    "id": "image_position",
+    "label": "Image position",
+    "options": [
+    {
+      "value": "left",
+      "label": "Image left"
+    },
+    {
+      "value": "right",
+      "label": "Image right"
+    }
+    ],
+    "default": "left"
+  }
+  ],
+  "presets": [
+  {
+    "name": "Media block",
+    "category": "Banner"
+  }
+  ]
+}
+{% endschema %}

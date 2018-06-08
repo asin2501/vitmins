@@ -1,0 +1,17 @@
+@mixin home-section {
+    height: 690px;
+
+    @media(max-height: 720px) {
+        height: 75vh;
+    }
+
+    @include breakpoint(extra-small){
+        height:500px;
+    }
+
+    @include breakpoint(small) {
+        @media (orientation: landscape) {
+            height: 100vh;
+        }
+    }
+}

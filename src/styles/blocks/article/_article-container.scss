@@ -1,0 +1,28 @@
+.article-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 30px auto;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    max-height: 490px;
+  }
+
+  figure {
+    width: 100%;
+    margin: 0 !important;
+  }
+}
+
+.article-container--img {
+  max-width: none;
+
+  img {
+    max-height: 690px;
+  }
+
+  @include breakpoint(extra-small) {
+    padding: 0 !important;
+  }
+}

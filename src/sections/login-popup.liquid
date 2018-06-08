@@ -1,0 +1,211 @@
+<div class="popup js-login-popup" style="background-color: {{ section.settings.popup_bg }}">
+    <a href="#" class="popup__back-link js-back-popup">< Back</a>
+    <button class="close-button popup__close-button js-close-popup-account"><span></span><span></span></button>
+
+    <div class="popup__container">
+        <div class="popup__body">
+            <div class="popup__content">
+                <!-- Login form -->
+                <div id="CustomerLoginForm-popup">
+                <h3 class="popup__title">{{ section.settings.sign_in_title }}</h3>
+                {% form 'customer_login' %}
+                    <div class="form-row">
+                        <label for="CustomerEmail-popup" class="label">
+                            {{ 'customer.login.email' | t }}
+                        </label>
+                        <input type="email"
+                               name="customer[email]"
+                               id="CustomerEmail-popup"
+                               class="input {% if form.errors contains 'email' %}input-error{% endif %}"
+                               placeholder="{{ 'customer.login.email' | t }}"
+                               spellcheck="false"
+                               autocomplete="off"
+                               autocapitalize="off"
+                               required
+                               autofocus>
+                    </div>
+
+                    {% if form.password_needed %}
+                        <div class="form-row">
+                            <label for="CustomerPassword-popup" class="label">
+                                {{ 'customer.login.password' | t }}
+                            </label>
+                            <input type="password"
+                                   name="customer[password]"
+                                   id="CustomerPassword-popup"
+                                   class="input {% if form.errors contains 'password' %}input-error{% endif %}"
+                                   placeholder="{{ 'customer.login.password' | t }}">
+                        </div>
+                    {% endif %}
+                    {% if form.password_needed %}
+                        <div class="popup__forgot-pass">
+                            <a href="#recover" id="RecoverPassword-popup">{{ 'customer.login.forgot_password' | t }}</a>
+                        </div>
+
+                        <div class="button-row">
+                            <input type="submit" class="btn btn--md" value="{{ 'customer.login.sign_in' | t }}">
+                            <a id="CustomerRegister-popup" class="btn btn--md btn--white" href="#register" >{{ 'layout.customer.create_account' | t }}</a>
+                        </div>
+
+                    {% endif %}
+                {% endform %}
+                </div>
+                <!-- Login form end -->
+
+                <!-- Recover pass form -->
+                <div id="RecoverPasswordForm-popup" class="hide">
+                    <h3 class="popup__title">{{ section.settings.recover_title }}</h3>
+                    <p class="popup__recover-pass-text">{{ 'customer.recover_password.subtext' | t }}</p>
+
+                    {% form 'recover_customer_password' %}
+                    {{ form.errors | default_errors }}
+
+                    {% if form.posted_successfully? %}
+                        <span class="hide reset-password-success"></span>
+                    {% endif %}
+
+                    <div class="form-row">
+                        <label for="RecoverEmail-popup" class="label">
+                            {{ 'customer.recover_password.email' | t }}
+                        </label>
+                        <input type="email"
+                               name="email"
+                               id="RecoverEmail-popup"
+                               class="input"
+                               placeholder="{{ 'customer.recover_password.email' | t }}"
+                               spellcheck="false"
+                               autocomplete="off"
+                               required
+                               autocapitalize="off">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="button-row">
+                            <input type="submit" class="btn btn--md" value="{{ 'customer.recover_password.submit' | t }}">
+
+                            <button type="button" class="btn btn--md btn--white" id="HideRecoverPasswordLink-popup">
+                                {{ 'customer.recover_password.cancel' | t }}
+                            </button>
+                        </div>
+                    </div>
+
+                    {% endform %}
+                </div>
+                <!-- Recover pass form end -->
+
+                <!-- Register Form -->
+                <div id="CustomerRegisterForm-popup" class="hide">
+                    <h3 class="popup__title">{{ section.settings.register_title }}</h3>
+                    {% form 'create_customer' %}
+                    {{ form.errors | default_errors }}
+
+                    <div class="form-row">
+                        <label for="FirstName-popup" class="label">
+                            {{ 'customer.register.first_name' | t }}
+                        </label>
+                        <input type="text"
+                               name="customer[first_name]"
+                               id="FirstName-popup"
+                               class="input"
+                               placeholder="{{ 'customer.register.first_name' | t }}"
+                               autofocus
+                               required
+                               {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="LastName-popup" class="label">
+                            {{ 'customer.register.last_name' | t }}
+                        </label>
+                        <input type="text"
+                               name="customer[last_name]"
+                               id="LastName-popup"
+                               class="input"
+                               placeholder="{{ 'customer.register.last_name' | t }}"
+                               {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+                    </div>
+
+
+                    <div class="form-row">
+                        <label for="Email-popup" class="label">
+                            {{ 'customer.register.email' | t }}
+                        </label>
+                        <input type="email"
+                               name="customer[email]"
+                               id="Email-popup"
+                               class="input {% if form.errors contains 'email' %}input-error{% endif %}"
+                               placeholder="{{ 'customer.register.email' | t }}"
+                               value="{% if form.email %}{{ form.email }}{% endif %}"
+                               spellcheck="false"
+                               autocomplete="off"
+                               required
+                               autocapitalize="off">
+                    </div>
+
+
+                    <div class="form-row">
+                        <label for="CreatePassword-popup" class="label">
+                            {{ 'customer.register.password' | t }}
+                        </label>
+                        <input type="password"
+                               name="customer[password]"
+                               id="CreatePassword-popup"
+                               class="input {% if form.errors contains 'password' %}input-error{% endif %}"
+                               placeholder="{{ 'customer.register.password' | t }}">
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="button-row">
+                            <input type="submit" class="btn btn--md" value="{{ 'customer.register.submit' | t }}" >
+                            <button type="button" id="HideRegisterFormLink-popup" class="btn btn--md btn--white">Cancel</button>
+                        </div>
+                    </div>
+                    {% endform %}
+                </div>
+                <!-- Register Form end -->
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+{% schema %}
+{
+	"name": "Sign in Popup",
+	"settings": [
+		{
+			"type": "color",
+			"id": "popup_bg",
+			"label": "Popup background color",
+			"default": "#EBE3D7"
+		},
+		{
+			"type": "header",
+			"content": "Sign in form"
+		},
+		{
+			"type": "text",
+			"id": "sign_in_title",
+			"label": "Sign in title",
+			"default": "Sign in or register"
+		},
+        {
+            "type": "text",
+            "id": "register_title",
+            "label": "Register title",
+            "default": "Register"
+        },
+        {
+            "type": "text",
+            "id": "recover_title",
+            "label": "Recover password title",
+            "default": "Recover password"
+        }
+
+    ]
+}	
+{% endschema %}

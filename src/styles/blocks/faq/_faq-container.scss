@@ -1,0 +1,22 @@
+.faq-container {
+    padding-top: 75px;
+    padding-bottom: 80px;
+    text-align: center;
+    &:nth-of-type(odd) {
+        background-color: $light_beige;
+    }
+
+    @include breakpoint(extra-small) {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+
+.faq-container__title {
+    margin-bottom: 80px;
+
+    @include breakpoint(extra-small) {
+        margin-bottom: 40px;
+        font-size: 40px;
+    }
+}

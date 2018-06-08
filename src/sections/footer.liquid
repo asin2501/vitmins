@@ -1,0 +1,93 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer-manu">
+        {%- assign footer_linklist = section.settings.footer_linklist -%}
+        {% if linklists[footer_linklist].links.size > 0 %}
+            <ul class="footer-link-list">
+                {% for link in linklists[footer_linklist].links %}
+                    <li class="footer-link-list__link">
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {%- assign footer_linklist2 = section.settings.footer_linklist2 -%}
+        {% if linklists[footer_linklist2].links.size > 0 %}
+            <ul class="footer-link-list">
+                {% for link in linklists[footer_linklist2].links %}
+                    <li class="footer-link-list__link">
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        </div>
+
+        <div class="subscribeform">
+            <form action="{{ section.settings.action }}" id="subscribe-form">
+                <div class="subscribeform__inner">
+                <input type="email" name="EMAIL" class="subscribe-input subscribeform__input" placeholder="{{ section.settings.input_placeholder }}">
+                <input type="submit" class="btn subscribeform__btn" value="{{ section.settings.btn_text }}">
+                </div>
+            </form>
+        </div>
+
+        <div class="footer__logo" itemscope itemtype="http://schema.org/Organization">
+            <a href="/" itemprop="url" class="footer__logo-link">
+                {% if section.settings.logo != blank %}
+                    <img src="{{ section.settings.logo | img_url: 'master' }}"
+                         alt="{{ section.settings.logo.alt | default: shop.name }}"
+                         itemprop="logo">
+                {% endif %}
+            </a>
+        </div>
+
+        <div class="copyright">
+            <span>{{ 'layout.footer.copyright' | t }} &copy; Plein. {{ 'now' | date: "%Y" }}. All rights reserved.</span>
+        </div>
+    </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+          {
+            "type": "link_list",
+            "id": "footer_linklist",
+            "label": "First menu",
+            "default": "footer"
+          },
+            {
+                "type": "link_list",
+                "id": "footer_linklist2",
+                "label": "Second menu"
+            },
+            {
+                "type": "image_picker",
+                "id": "logo",
+                "label": "Logo image"
+            },
+          {
+            "type": "text",
+            "id": "input_placeholder",
+            "label": "Input Placeholder",
+            "default": "Sign up for our newsletter"
+          },
+          {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button Text",
+            "default": "Sign up"
+          },
+         {
+            "type": "text",
+            "id": "action",
+            "label": "Action",
+            "default": "Form Action"
+         }
+    ]
+  }
+
+{% endschema %}

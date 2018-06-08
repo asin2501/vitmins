@@ -1,0 +1,121 @@
+<section class="page-banner"
+         style="background-color: {{ section.settings.banner_bg_color }};
+         {% if section.settings.banner_image != blank %} background-image: url('{{ section.settings.banner_image | img_url: 'master' }}');{% endif %}">
+
+    <div class="container">
+        {% if section.settings.banner_title != blank %}
+            <h1 class="page-banner__title" style="color:{{ section.settings.banner_title_color }}">{{ section.settings.banner_title }}</h1>
+        {% endif %}
+    </div>
+</section>
+{% assign categorylines = section.settings.category | split: "," %}
+<div class="navigation-panel js-navpanel" style="background-color: #ebe3d7">
+    <div class="special-nav-container">
+        <div class="navigation-panel__label js-navpanel-label">
+            Filter by ingredient <span class="navigation-panel__icon">{% include 'icon-down-chevron' %}</span>
+        </div>
+        <ul class="navigation-panel__menu js-navpanel-menu" id="innovation-filters">
+            <li class="navigation-panel__item">
+                <span class="navigation-panel__link js-vitamine-filter" data-category="All">All</span>
+            </li>
+            {% for category in categorylines %}
+                <li class="navigation-panel__item">
+                    <span class="navigation-panel__link js-vitamine-filter" data-category="{{ category }}">{{ category }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<ul class="innovation-vitamin-list">
+    {% for blok in section.blocks %}
+        {% for article in blogs[blok.settings.blog].articles %}
+            {% assign forloop_module_2 = forloop.index | modulo: 2 %}
+            <li class="vitamine js-vitamine {% if forloop_module_2 == 0 %} vitamine--bg-beige {% endif %}" data-category="{{ article.tags }}" data-index="{{ forloop.index }}" data-module="{{ forloop_module_2 }}">
+                <div class="container">
+                    <div class="vitamine__inner js-toggle-parent">
+                        <div class="vitamin__img">
+                            <div class="vitamin__img-inner" style="background-image:url({{ article.image | img_url:'master' }});"></div>
+                        </div>
+                        <div class="vitamine__mobile-title">
+                            <div>{{ article.title }}</div>
+                            <div class="more-info js-toggle-btn">{{ 'custom.more_Info' | t }} <span class="more-info__arrow"></span></div>
+                        </div>
+                        <div class="vitamine__info js-toggle-content">
+                            <div class="vitamine__header">
+                                <h3 class="vitamine__title">{{ article.title }}</h3>
+                                <ul class="vitamine__tags">
+                                    {% for tag in article.tags %}
+                                        <li>{{ tag }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="vitamine__description">
+                                {{ article.excerpt_or_content }}
+
+                                {% assign my_product = all_products[article.metafields.sf_vitamins.link_to_product] %}
+                                {% unless my_product.empty? %}
+                                <p class="vitamine__link-top-product">Exist in: <a href="{{ my_product.url }}">{{ my_product.title }} <span class="line-arrow">−&gt;</span></a></p>
+                                {% endunless %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    {% endfor %}
+</ul>
+
+{% schema %}
+{
+    "name": "Page Innovations",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Page banner"
+        },
+        {
+            "type": "color",
+            "id": "banner_bg_color",
+            "label": "Banner background-color",
+            "default": "#FBFAF8"
+        },
+        {
+            "type": "image_picker",
+            "id": "banner_image",
+            "label": "Banner image"
+        },
+        {
+            "type": "text",
+            "id": "banner_title",
+            "label": "Banner title",
+            "default":"It’s ok to geek out on vitamins."
+        },
+        {
+            "type": "color",
+            "id": "banner_title_color",
+            "label": "Banner title color",
+            "default": "#16161D"
+        },
+        {
+            "type": "textarea",
+            "id": "category",
+            "label": "Categories",
+            "default": "Brain, Energy, Eyes, Stress, Heart, Immunity, Joints, Skin, Prenatal, Digestion, Bones"
+        }
+    ],
+    "blocks":[
+    {
+        "type":"Blog",
+        "name":"Blog",
+        "settings": [
+                {
+                    "type":"blog",
+                    "id":"blog",
+                    "label":"Blog with vitamins"
+                }
+        ]
+    }]
+}
+{% endschema %}

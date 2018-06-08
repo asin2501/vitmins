@@ -1,0 +1,63 @@
+<div class="link-section">
+    <div class="container link-section__inner">
+        <div class="link-section__card big-text {% if section.settings.color == 'blue' %}link-section__card--blue{% endif %}">
+            {% if section.settings.text1 %}
+                <p class="link-section__text">{{ section.settings.text1 }}</p>
+            {% endif %}
+            {% if section.settings.text2 %}
+                <p class="link-section__text">{{ section.settings.text2 }}</p>
+            {% endif %}
+            {% if section.settings.btn_text %}
+                <a href="{{ section.settings.link_url }}">{{ section.settings.btn_text }} <span class="line-arrow">&minus;></span></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+"name": "Link section shipping",
+"settings": [
+{
+"type": "text",
+"id": "text1",
+"label": "Title",
+"default":"Did you know that we offer Free Shipping on orders above NOK 900,-"
+},{
+"type": "text",
+"id": "text2",
+"label": "Subtitle"
+},{
+"type": "text",
+"id": "btn_text",
+"label": "Button Text",
+"default":"Shipping Information"
+},{
+"type":"url",
+"id":"link_url",
+"label":"Link URL"
+},{
+"type":"select",
+"id":"color",
+"label":"label",
+"options": [
+{
+"value": "blue",
+"label": "Blue"
+},
+{
+"value": "pink",
+"label": "Pink"
+}
+],
+"default": "blue"
+}
+],
+"presets":[
+{
+"name": "Link Section",
+"category": "Custom sections"
+}
+]
+}
+{% endschema %}

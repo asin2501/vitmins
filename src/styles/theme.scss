@@ -1,0 +1,109 @@
+@charset "UTF-8";
+/*============================================================================
+  [replace with theme name] | Built with Slate
+    - You cannot use native CSS/Sass @imports in this file without a build script
+==============================================================================*/
+
+/*================ Mixins================*/
+@import url('mixins/_mixins.scss');
+
+
+/*================ Base ================*/
+@import url('base/_base.scss');
+
+
+/*================ Libs ================*/
+@import url('libs/_slick.scss');
+@import url('libs/_slick-theme.scss');
+
+
+/*================ Blocks ================*/
+@import url('blocks/common/_responsive-tables.scss');
+
+//UI
+@import url('blocks/ui/_close-button.scss');
+@import url('blocks/ui/_menu-button.scss');
+@import url('blocks/ui/_label.scss');
+@import url('blocks/ui/_input.scss');
+@import url('blocks/ui/_form-row.scss');
+@import url('blocks/ui/_select.scss');
+
+
+//Header
+@import url('blocks/header/_header.scss');
+@import url('blocks/header/_main-menu.scss');
+@import url('blocks/header/_promo-ribbon.scss');
+
+//Home page
+@import url('blocks/home/_simple-banner.scss');
+@import url('blocks/home/_link-section.scss');
+@import url('blocks/home/_media-block.scss');
+
+//Faq page
+@import url('blocks/faq/_faq-container.scss');
+@import url('blocks/faq/_faq-accordion.scss');
+
+//Footer
+@import url('blocks/footer/_footer.scss');
+@import url('blocks/footer/_footer-link-list.scss');
+
+//Popup
+@import url('blocks/popup/_popup.scss');
+
+//Common
+@import url('blocks/common/_btn.scss');
+@import url('blocks/common/_subscribeform.scss');
+@import url('blocks/common/_subscribe-input.scss');
+@import url('blocks/common/_page-banner.scss');
+@import url('blocks/common/_navigation-panel.scss');
+@import url('blocks/common/_close-btn.scss');
+@import url('blocks/common/_button-row.scss');
+@import url('blocks/common/_vitamine.scss');
+
+
+//About
+@import url('blocks/about/_about-section.scss');
+@import url('blocks/about/_about-page.scss');
+
+//Shop
+@import url('blocks/shop/_shop-content.scss');
+@import url('blocks/shop/_collection-slider.scss');
+
+//prodcut
+@import url('blocks/product/_product.scss');
+@import url('blocks/product/_propose-banner.scss');
+@import url('blocks/product/_product-vitamins-list.scss');
+@import url('blocks/product/_more-info.scss');
+@import url('blocks/product/_product-form.scss');
+@import url('blocks/product/_product-inp-qty.scss');
+@import url('blocks/product/_products-row.scss');
+@import url('blocks/product/_product-item.scss');
+@import url('blocks/product/_product-card.scss');
+@import url('blocks/product/_products-list.scss');
+
+
+//Minicart
+@import url('blocks/minicart/_minicart.scss');
+@import url('blocks/minicart/_minicart-item.scss');
+@import url('blocks/minicart/_qty-widget.scss');
+
+
+//Layout
+@import url('layout/_template-index.scss');
+@import url('layout/_template-product.scss');
+
+//Customer Support
+@import url('blocks/support/_support-section.scss');
+
+//Article
+@import url('blocks/article/_single-article.scss');
+@import url('blocks/article/_article-container.scss');
+
+//Account
+@import url('blocks/account/_account.scss');
+@import url('blocks/account/_account-form.scss');
+@import url('blocks/account/_shopify-challenge__container.scss');
+@import url('blocks/account/_addresses.scss');
+
+@import url('blocks/home/_media-block.scss');
+

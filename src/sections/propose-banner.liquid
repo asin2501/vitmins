@@ -1,0 +1,22 @@
+<div class="propose-banner">
+    <h3 class="propose-banner__text">{{ section.settings.title }}</h3>
+    <img class="propose-banner__img" src="{{ section.settings.bg_img | img_url: 'master' }}" alt="">
+</div>
+
+{% schema %}
+{
+"name": "Propose Banner",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default":"Get the premium box on all orders over NOK 500,-"
+        },{
+            "type":"image_picker",
+            "id":"bg_img",
+            "label":"Background Image"
+        }
+    ]
+}
+{% endschema %}

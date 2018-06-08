@@ -1,0 +1,156 @@
+<div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
+
+    {%- assign current_variant = product.selected_or_first_available_variant -%}
+    {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+  <meta itemprop="name" content="{{ product.title }}{% unless product.has_only_default_variant %} - {{ current_variant.title }}{% endunless %}">
+  <meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
+  <meta itemprop="brand" content="{{ product.vendor }}">
+  <meta itemprop="image" content="{{ featured_image | img_url: '600x600' }}">
+  <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
+
+    {% if featured_image != blank %}
+      <div class="simple-banner simple-banner__with-bg" style="background-image:url({{ featured_image | img_url: 'master' }});">
+        <div class="container">
+          <div class="simple-banner__inner">
+            <h1 class="simple-banner__title">{{ product.title }}</h1>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+
+  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+    <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+    <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+
+    <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form {% if product.description == blank %} product-form--offset-bottom {% endif %}" >
+
+      <input type="hidden"  name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <div class="product-inp-qty js-qty-widget" data-variant-id="{{product.selected_or_first_available_variant.id   }}">
+        <button type="button" class="product-inp-qty__minus js-minus">-</button>
+        <span class="product-inp-qty__input js-val">1</span>
+        <button type="button" class="product-inp-qty__plus js-plus">+</button>
+      </div>
+      <div data-price-wrapper>
+        <span data-product-price>
+          {{ current_variant.price | money_without_currency | split:'.' | first }}nok/month
+        </span>
+      </div>
+      <button
+              type="submit"
+              name="add"
+              class="product-form__add-to-cart js-add-to-cart"
+              data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+              {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+          <span data-add-to-cart-text>
+            {% if current_variant.available %}
+                {{ 'products.product.add_to_cart' | t }}
+            {% else %}
+                {{ 'products.product.sold_out' | t }}
+            {% endif %}
+          </span>
+      </button>
+    </form>
+  </div>
+
+  {% if product.description != blank %}
+  <div class="product__description">
+    <div class="product-container">
+        {{ product.description }}
+    </div>
+  </div>
+  {% endif %}
+
+  {% unless articles[product.metafields.sf_product.ingredients_ingredient_1].empty? %}
+    <div class="product-vitamins-list">
+      <div class="container">
+        <h2>{{ section.settings.vitamins_title }}</h2>
+      </div>
+        <ul class="product-vitamins-list__list">
+            {% for i in (1..4) %}
+                {% assign vitamine_name = 'ingredients_ingredient_' | append: i %}
+                {% assign vitamine = articles[product.metafields.sf_product[vitamine_name]] %}
+                {% unless vitamine.empty? %}
+              <li class="vitamine">
+                <div class="container">
+                  <div class="vitamine__inner js-toggle-parent">
+                    <div class="vitamin__img">
+                      <div class="vitamin__img-inner" style="background-image:url({{ vitamine.image | img_url:'master' }});"></div>
+                    </div>
+                    <div class="vitamine__mobile-title">
+                        <div>{{ vitamine.title }}</div>
+                      <div class="more-info js-toggle-btn">{{ 'custom.more_Info' | t }} <span class="more-info__arrow"></span></div>
+                    </div>
+                    <div class="vitamine__info js-toggle-content">
+                      <div class="vitamine__header">
+                        <h3 class="vitamine__title">{{ vitamine.title }}</h3>
+                        <ul class="vitamine__tags">
+                            {% for tag in vitamine.tags %}
+                              <li>{{ tag }}</li>
+                            {% endfor %}
+                        </ul>
+                      </div>
+                      <div class="vitamine__description">
+                          {{ vitamine.excerpt_or_content }}
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </li>
+                {% endunless %}
+            {% endfor %}
+        </ul>
+    </div>
+  {% endunless %}
+
+  {% assign mf_title = product.metafields.sf_product.additional_description_title %}
+  {% assign mf_desciption = product.metafields.sf_product.additional_description %}
+
+  {% if mf_title or mf_desciption %}
+    <div class="product__description product__description--bg">
+      <div class="product-container">
+          {% if mf_title %}
+            <h2>{{ mf_title }}</h2>
+          {% endif %}
+
+          {% if mf_desciption %}
+              {{ mf_desciption }}
+          {% endif %}
+    </div>
+  {% endif %}
+
+    {% comment %}
+    {% if section.settings.show_share_buttons %}
+        {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+    {% endif %}
+    {% endcomment %}
+
+    {% unless product == empty %}
+  <script type="application/json" data-product-json>
+    {{ product | json }}
+  </script>
+    {% endunless %}
+</div>
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "vitamins_title",
+        "label": "Vitamins title",
+        "default": "Vitamins in this film"
+      }
+    ]
+  }
+{% endschema %}

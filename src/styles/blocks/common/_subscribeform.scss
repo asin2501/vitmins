@@ -1,0 +1,44 @@
+.subscribeform {
+    margin-bottom: 100px;
+    word-spacing: 0;
+    * {
+        margin: 0;
+    }
+
+    form {
+        max-width: 580px;
+        margin: 0 auto;
+
+    }
+
+    @include breakpoint(small-tablet-portrait) {
+        margin-bottom: 120px;
+    }
+
+}
+
+.subscribeform__inner {
+    display: flex;
+    align-items: center;
+    * {
+        display: block;
+    }
+}
+
+.mc-response {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.subscribeform__btn {
+    border-radius: 0 3px 3px 0;
+
+    @include breakpoint(mobile-landscape) {
+        height: 64px;
+        line-height: 64px;
+    }
+}
+
+.subscribeform__input {
+    border-radius: 3px 0 0 3px;
+}

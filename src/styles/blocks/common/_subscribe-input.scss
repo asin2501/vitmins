@@ -1,0 +1,35 @@
+.subscribe-input{
+    padding-top:23px;
+    padding-bottom:24px;
+    background-color: transparent;
+    padding-left:30px;
+    padding-right:10px;
+    border: 1px solid $eigengrau_black;
+    font-size:20px;
+    display: block;
+    width:100%;
+    color: $eigengrau_black;
+
+    //border-radius:0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    //line-height:20px;
+    height:72px;
+
+    @include placeholder{
+        color: inherit;
+        opacity: 1;
+    }
+
+    @include placeholder{
+        color: $eigengrau_black;
+    }
+
+    @include breakpoint(mobile-landscape){
+        padding-left:15px;
+        font-size:14px;
+        padding-top:20px;
+        padding-bottom:20px;
+        height:64px;
+    }
+}

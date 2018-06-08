@@ -1,0 +1,26 @@
+.input {
+    width: 100%;
+    min-height: 63px;
+    max-height: 63px;
+    padding: 20px 25px;
+    border-radius: 2px;
+    box-shadow: none;
+    border: none;
+    color: $black;
+    -webkit-appearance: none;
+    background-color: #f3f3f3;
+    font-family: $moderat-light;
+    font-size: {{ settings.type_base_size }};
+    transition: .3s all;
+    &:focus {
+        box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.36);
+    }
+
+    @include placeholder {
+        color: #b8b8b8;
+    }
+
+    @include breakpoint(extra-small) {
+        font-size: 18px;
+    }
+}

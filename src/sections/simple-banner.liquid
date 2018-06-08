@@ -1,0 +1,57 @@
+<div class="simple-banner {% if section.settings.bg_img %}simple-banner__with-bg{% endif %}"
+     {% if section.settings.bg_img != blank %} style="background-image:url({{ section.settings.bg_img | img_url : 'master' }});" {% endif %}>
+    <div class="container">
+        <div class="simple-banner__inner">
+            <h2 class="simple-banner__title">{{ section.settings.title }}</h2>
+
+            {% if section.settings.subtitle != blank or section.settings.link_url != blank %}
+                <div class="big-text">
+                    {% if section.settings.subtitle != blank %}
+                        <p class="simple-banner__subtitle">{{ section.settings.subtitle }}</p>
+                    {% endif %}
+                    {% if section.settings.link_url != blank %}
+                        <a href="{{ section.settings.link_url }}">{{ section.settings.btn_text }} <span class="line-arrow">&minus;></span></a>
+                    {% endif %}
+                </div>
+            {% endif  %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Product pages",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default":"Good habits, made simple."
+        },{
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subitle",
+            "default":"Everyone has a different path to personal health, and we’re here to make it easy for you."
+        },{
+            "type": "text",
+            "id": "btn_text",
+            "label": "Link title",
+            "default":"Shop now ->"
+        },{
+            "type":"url",
+            "id":"link_url",
+            "label":"Link URL"
+        },{
+            "type":"image_picker",
+            "id":"bg_img",
+            "label":"Background Image"
+        }
+    ],
+    "presets":[
+        {
+        "name": "Banner",
+        "category": "Custom sections"
+        }
+    ]
+}
+{% endschema %}

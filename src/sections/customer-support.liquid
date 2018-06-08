@@ -1,0 +1,101 @@
+<section class="page-banner"
+         style="background-color: {{ section.settings.banner_bg }};
+         {% if section.settings.banner_image != blank %} background-image: url('{{ section.settings.banner_image | img_url: 'master' }}');{% endif %}">
+
+    <div class="container">
+        {% if section.settings.banner_title != blank %}
+            <h1 class="page-banner__title" style="color:{{ section.settings.banner_title_color }}">{{ section.settings.banner_title }}</h1>
+        {% endif %}
+    </div>
+</section>
+<div class="support-page">
+
+    {% if section.blocks != blank %}
+        <div class="navigation-panel js-navpanel" style="background-color: {{ section.settings.nav_bg }}">
+            <div class="container">
+                <div class="navigation-panel__label js-navpanel-label">Filter by section<span class="navigation-panel__icon">{% include 'icon-down-chevron' %}</span></div>
+                <ul class="navigation-panel__menu js-navpanel-menu">
+                    {% for block in section.blocks %}
+                        <li class="navigation-panel__item"><a href="#{{ block.settings.title | handleize }}" class="navigation-panel__link js-anchor-link">{{ block.settings.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="support-sections">
+        {% for block in section.blocks %}
+            <div class="support-section">
+                <div class="support-section-content">
+                    <h2 id="{{ block.settings.title | handleize }}" class="support-section__title">{{ block.settings.title }}</h2>
+                    {% if block.settings.text != blank %}
+                        <div class="support-section__text">{{ block.settings.text }}</div>
+                    {% endif %}
+                    {% if block.settings.text2 != blank %}
+                        <div class="support-section__text support-section__text--additional big-text">{{ block.settings.text2 }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% schema %}
+    {
+        "name"     : "Customer Support",
+        "settings" : [
+            {
+                "type"    : "color",
+                "id"      : "nav_bg",
+                "label"   : "navigation background color",
+                "default" : "#EBE3D7"
+            },
+            {
+                "type": "image_picker",
+                "id": "banner_image",
+                "label": "Banner image"
+            },
+            {
+                "type": "html",
+                "id": "banner_title",
+                "label": "Banner title"
+            },
+            {
+                "type": "color",
+                "id": "banner_title_color",
+                "label": "Banner title color",
+                "default": "#16161D"
+            },
+            {
+                "type"  : "color",
+                "id"    : "banner_bg",
+                "label" : "Banner background color",
+                "default" : "#FBFAF8"
+            }
+        ],
+        "blocks"  : [
+            {
+                "type"     : "select",
+                "name"     : "text section",
+                "settings" : [
+                    {
+                        "id"    : "title",
+                        "type"  : "text",
+                        "label" : "Block title"
+                    },
+                    {
+                        "id"    : "text",
+                        "type"  : "richtext",
+                        "label" : "Block text"
+                    },
+                    {
+                        "id"    : "text2",
+                        "type"  : "richtext",
+                        "label" : "Block text 2"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

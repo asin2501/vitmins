@@ -1,0 +1,10 @@
+.products-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -20px;
+    margin-top: 60px;
+
+    @include breakpoint(extra-small) {
+        margin-top: 30px;
+    }
+}

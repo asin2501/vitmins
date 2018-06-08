@@ -1,0 +1,23 @@
+.promo-ribbon {
+    position: relative;
+    background-color: $beige;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.promo-ribbon__cross {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    line-height: 1;
+    padding: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 30px;
+    transform: rotateZ(-45deg);
+    cursor: pointer;
+}

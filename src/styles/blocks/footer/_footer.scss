@@ -1,0 +1,33 @@
+.footer{
+    padding-top:50px;
+    padding-bottom:26px;
+    background-color: $beige;
+
+    .copyright{
+        margin-top: 10px;
+        text-align: center;
+        font-size:11px;
+
+        @include breakpoint(mobile-landscape){
+            //font-size:14px;
+        }
+    }
+
+    @include breakpoint(small-tablet-portrait) {
+        padding-top: 45px;
+    }
+}
+
+.footer__logo{
+    max-width: 90px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.footer__logo-link{
+    display: block;
+    border: none;
+    &:hover {
+        border: none;
+    }
+}

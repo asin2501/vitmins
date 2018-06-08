@@ -1,0 +1,237 @@
+.account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 190px;
+  padding-right: 30px;
+  padding-bottom: 90px;
+  padding-left: 30px;
+
+  .account-info-title {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: normal;
+
+    @include breakpoint(extra-small) {
+      font-size: 40px;
+    }
+
+    @include breakpoint(mobile) {
+      font-size: 35px;
+    }
+  }
+
+  .account-title {
+    margin-bottom: 60px;
+    text-align: center;
+  }
+
+  .account-table {
+     border: 1px solid $gray;
+     border-collapse: collapse;
+     margin-bottom: 20px;
+
+     td, th {
+       padding: 15px;
+       text-align: left;
+       border: 1px solid $gray;
+     }
+
+     tbody {
+
+       @include breakpoint(small) {
+         display: flex;
+         flex-wrap: wrap;
+
+         tr {
+           margin-top: 0;
+           width: calc(50% - 20px);
+           margin: 10px;
+         }
+       }
+
+       @include breakpoint(extra-small) {
+
+         tr {
+           width: 100%;
+         }
+       }
+
+       @include breakpoint(mobile-landscape) {
+
+         tr {
+           margin: 5px;
+         }
+       }
+     }
+
+     th {
+       background-color: #cccccc36;
+     }
+   }
+
+  .account-table-small {
+    border: 1px solid $gray;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+    td, th {
+      padding: 15px;
+      text-align: left;
+      border: 1px solid $gray;
+    }
+
+    .table-total-price {
+      font-weight: bold;
+    }
+
+    tbody {
+
+      @include breakpoint(extra-small) {
+        display: flex;
+        flex-wrap: wrap;
+
+        tr {
+          margin-top: 0;
+          width: calc(50% - 20px);
+          margin: 10px 0;
+        }
+      }
+
+      @include breakpoint(extra-small) {
+
+        tr {
+          width: 100%;
+        }
+      }
+
+      @include breakpoint(mobile-landscape) {
+
+        tr {
+          margin: 0;
+        }
+      }
+    }
+
+    th {
+      background-color: #cccccc36;
+    }
+
+    .hide-title {
+
+      .small--hide {
+        font-weight: bold;
+      }
+
+      @include breakpoint(extra-small) {
+
+        .small--hide {
+          display: none;
+        }
+
+        tr {
+          &:not(:last-child) {
+            border-bottom: none !important;
+          }
+        }
+      }
+    }
+  }
+
+  .account-info-block {
+    margin: 10px 0;
+  }
+
+  .account-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.2;
+    width: auto;
+  }
+
+  .account-btn-ingroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.2;
+    width: 50%;
+
+    @include breakpoint(small-tablet-portrait) {
+      width: 100%;
+    }
+  }
+
+  .account-details {
+    margin-bottom: 30px;
+  }
+}
+
+.account-info-text {
+  margin-bottom: 20px;
+}
+
+.account-info-text--60 {
+  margin-bottom: 45px;
+}
+
+.account--addresses {
+
+  .account-btn {
+
+    @include breakpoint(small-tablet-portrait) {
+      width: 100%;
+    }
+  }
+  .button-row--additional {
+
+    .btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 2.4;
+      height: 40px;
+      font-size: 16px;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  }
+
+  .address-block {
+    text-align: center;
+
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+
+  @include breakpoint(small-tablet-portrait) {
+    max-width: 415px;
+    margin: 0 auto;
+  }
+
+  input[type="checkbox"] {
+    margin-bottom: 25px;
+
+    @include breakpoint(extra-small) {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.account--register {
+
+  form {
+    width: 100%;
+    max-width: 470px;
+  }
+}
+
+.account--order {
+
+  h2 {
+    margin-top: 30px;
+  }
+}

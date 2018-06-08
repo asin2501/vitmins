@@ -1,0 +1,32 @@
+.product__main-image {
+    width: 100%;
+}
+
+.product__description {
+    padding-top: 70px;
+    padding-bottom: 90px;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    h4 {
+        margin-bottom: 60px;
+        font-size: 30px;
+        font-weight: normal;
+    }
+
+    p {
+        margin-bottom: 30px;
+    }
+
+    &.product__description--bg {
+        background-color: $light_beige;
+    }
+
+    @include breakpoint(mobile-landscape){
+        padding-top:40px;
+        padding-bottom:20px;
+    }
+}

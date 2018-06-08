@@ -1,0 +1,49 @@
+<div class="minicart" :class="{'minicart--opened':opened}" id="minicart">
+    <div class="minicart__header">
+        <button class="close-btn minicart__close-btn" @click="hide">{% include 'icon-close' %}</button>
+    </div>
+    <div class="minicart__item-list">
+        <transition name="component-fade" mode="out-in">
+            <template v-if="cartData.item_count">
+                <transition-group name="list-complete" tag="div" class="minicart__item-list-inner">
+                    <article v-for="item in cartData.items" class="minicart-item" :key="item.id">
+                        <button class="close-btn minicart-item__remove" @click="remove(item.id)">{% include 'icon-close' %}</button>
+                        <div class="minicart-item__img-col">
+                            <div class="minicart-item__img" :style="{'background-image': 'url(' + item.image + ')'}">
+                            </div>
+                        </div>
+                        <div class="minicart-item__info">
+                            <div class="minicart-item__top">
+                                <h5 class="minicart-item__title">{% raw %}{{ item.product_title }}{% endraw %}</h5>
+                                <h5 class="minicart-item__title" v-if="item.variant_options.length">{% raw %}{{ item.variant_options[0] }}{% endraw %}</h5>
+                            </div>
+                            <div class="minicart-item__bottom">
+                                <div class="minicart-item__qty qty-widget">
+                                    <button class="qty-widget__minus" @click="minus(item.id)">-</button>
+                                    <span class="qty-widget__digit">{% raw %}{{ item.quantity }}{% endraw %}</span>
+                                    <button class="qty-widget__plus" @click="plus(item.id)">+</button>
+                                </div>
+                                <div class="minicart-item__price">
+                                    NOK {% raw %}{{ Math.floor(item.price/100) }}{% endraw %},-
+                                </div>
+                            </div>
+                        </div>
+
+                    </article>
+                </transition-group>
+            </template>
+            <div class="minicart__empty" v-else>
+                <div class="minicart__empty-inner">
+                    {{ 'cart.general.empty' | t }}
+                </div>
+            </div>
+        </transition>
+    </div>
+    <div class="minicart__footer" v-if="cartData.item_count">
+        <div class="minicart__totlals">
+            <span>{{ 'cart.general.subtotalt' | t }}</span>
+            <span>NOK {% raw %}{{ Math.floor(cartData.total_price/100) }}{% endraw %},-</span>
+        </div>
+        <a class="btn" href="/checkout">{{ 'cart.general.checkout' | t }}</a>
+    </div>
+</div>

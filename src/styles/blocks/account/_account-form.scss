@@ -1,0 +1,18 @@
+.account-form {
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+
+    @include placeholder {
+      color: #b8b8b8;
+    }
+  }
+
+  .account-edit-title {
+    margin-top: 35px;
+  }
+}
